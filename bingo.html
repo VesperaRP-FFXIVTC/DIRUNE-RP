@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRUNE | 貓咪肉球賓果</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/AK1Hbub.png">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 音樂播放器 -->
+    <!-- 💥 加上 autoplay 屬性，告訴瀏覽器我們想自動播放 -->
+    <audio id="bgm" autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/3h5gixndlak2mgygluquq/Track-in-Time-Piano-Version.mp3?rlkey=zofpza1p3lwamce0xu95jfpjs&st=l4lzlxlu&raw=1" type="audio/mpeg">
+    </audio>
+    <div class="music-toggle" id="musicBtn">
+        <span id="music-icon">🎵</span>
+        <span class="music-text">BGM OFF</span>
+    </div>
+
+    <!-- 導覽列 -->
+    <header>
+       <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="menu.html">MENU</a></li>
+            <li><a href="cats.html">CATS</a></li>
+            <li><a href="rules.html">RULES</a></li>
+            <li><a href="booking.html">BOOKING</a></li>
+            <li><a href="bingo.html" class="active">BINGO</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- 賓果內容 -->
+    <div id="bingo-page" class="page active" style="overflow-y: auto;">
+        <div class="bingo-wrapper" style="max-width: 1000px; margin: 40px auto 100px; padding: 0 20px; text-align: center;">
+            <h1 class="section-title">Paw Bingo</h1>
+            <p class="section-subtitle">貓咪肉球賓果挑戰</p>
+
+            <!-- 📜 獨立置頂規則區 (完全獨立於左右排版，全部置左對齊) -->
+            <div class="top-rules-box">
+                <div class="rules-header">🐾 BINGO 全場競速規則</div>
+                <ol class="rules-steps">
+                    <li>請先在店內支付遊玩費用，遊玩費用為 10,000 Gil，在閉店前30分鐘開始遊戲並關閉付款窗口。</li>
+                    <li>輸入「入場授權碼」，領取您的專屬防偽賓果卡。</li>
+                    <li>遊戲開始時，店長會在遊戲內隨機抽出開獎號碼，網站內亦會實時更新抽出的數字，點擊數字格子蓋上肉球印章。</li>
+                    <li><strong>最少連成 2 條線</strong>，即可點擊下方「🎯 喊出 BINGO!」鎖定卡片。</li>
+                    <li>將鎖定後的完整畫面（需包含右上角流水號）截圖傳給店長兌獎！</li>
+                    <li><strong style="color: #d32f2f;">⚠️ 注意事項：全場獲獎名額僅限 5 名！</strong><br>
+                        不論幾條線，只要成功兌獎就會霸佔 1 個名額。<br>
+                        滿 5 人喊出 BINGO 遊戲即刻結束！要見好就收，還是賭一把拿大獎？所有，或者一無所有！
+                    </li>
+                </ol>
+            </div>
+
+            <!-- 🔴 實時開出號碼顯示區 (預設隱藏，解鎖後顯示) -->
+            <div id="live-draw-board" class="live-draw-board" style="display: none;">
+                <div class="live-draw-title">📡 實時最新開出號碼 (每 8 秒自動同步)</div>
+                <div id="live-balls-container" class="live-balls-container">
+                    <!-- JS 會把抽出來的號碼變成圓球放在這裡 -->
+                    <span style="color: #999; font-size: 0.9rem;">等待店長開獎中...</span>
+                </div>
+            </div>
+
+            <!-- 💥 負責左右排版的 bingo-layout -->
+            <div class="bingo-layout">
+                
+                <!-- 左側：遊戲互動區 -->
+                <div class="bingo-play-area">
+                    
+                    <!-- 🔒 密碼解鎖畫面 -->
+                    <div id="bingo-lock-screen" class="lock-screen-container">
+                        <div class="lock-icon">🎟️</div>
+                        <h3>領取賓果卡</h3>
+                        <p class="lock-desc">請於店內支付遊玩費用後，向店員索取「入場授權碼」。</p>
+                        <input type="text" id="bingo-password" class="custom-select" placeholder="請輸入授權碼 (例如: 8888)" style="width: 80%; text-align: center; margin-bottom: 15px; font-weight: bold; letter-spacing: 2px;">
+                        <button id="unlock-btn" class="submit-btn" style="width: 80%; margin-top: 0;">連線驗證並發放卡片</button>
+                        <p id="lock-error" style="display: none; color: #d32f2f; font-size: 0.95rem; margin-top: 15px; font-weight: bold;"></p>
+                    </div>
+
+                    <!-- 🎮 賓果遊戲區 -->
+                    <div id="bingo-game-content" style="display: none;">
+                        <div class="bingo-board-container">
+                            <div class="ticket-serial">Ticket No. <span id="board-serial">????-????</span></div>
+                            <div id="bingo-board" class="bingo-board"></div>
+                        </div>
+                        
+                        <div class="bingo-action-area" style="margin-top: 25px; text-align: center;">
+                            <button id="bingo-shout-btn" class="bingo-shout-btn">🎯 喊出 BINGO! (鎖定卡片)</button>
+                            <p id="bingo-status-text" style="color: #8D6E63; font-size: 0.9rem; margin-top: 10px; font-weight: bold; letter-spacing: 1px;">
+                                ✦ 點擊數字格子可蓋章，確認連線數後請點擊上方按鈕鎖定卡片截圖！ ✦
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右側：獎勵區 -->
+                <div class="bingo-rules-area">
+                    <h3 class="rules-title">🎁 兌換獎勵 <span style="font-size: 1rem; color: #d32f2f;">(限量 5 名)</span></h3>
+                    <ul class="prize-list" style="font-size: 1.1rem;">
+                        <li><strong>2 條連線：</strong> <span style="color: #d4af37; font-weight: bold;">20,000 Gil</span></li>
+                        <li><strong>3 條連線：</strong> <span style="color: #d4af37; font-weight: bold;">50,000 Gil</span></li>
+                        <li><strong>4 條連線：</strong> <span style="color: #d4af37; font-weight: bold;">100,000 Gil</span></li>
+                        <li><strong>5 條連線：</strong> <span style="color: #d4af37; font-weight: bold; font-size: 1.3rem;">200,000 Gil</span></li>
+                    </ul>
+                    <div style="background: #fdfaf1; padding: 15px; border-radius: 10px; border-left: 4px solid #d4af37; margin-top: 20px;">
+                        <p style="margin: 0; font-size: 0.9rem; color: #666; line-height: 1.6;">
+                            💡 <strong>心機指南：</strong><br>你可以選擇 2 條線就提早鎖定卡片霸佔名額；也可以忍住不喊，等湊齊更多連線換取高額獎金！但小心... 名額隨時會被其他人搶光喔！
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+    <!-- 🐾 DIRUNE 客製化通用懸浮彈窗 -->
+    <div id="custom-modal" class="custom-modal-overlay" style="display: none;">
+        <div class="custom-modal-card">
+            <div id="modal-icon" class="modal-icon">⚠️</div>
+            <h3 id="modal-title" class="modal-title">標題</h3>
+            <p id="modal-message" class="modal-message">內容訊息</p>
+            <div class="modal-actions">
+                <button id="modal-cancel-btn" class="modal-btn modal-cancel-btn">取消</button>
+                <button id="modal-confirm-btn" class="modal-btn modal-confirm-btn">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="bingo.js"></script>
+</body>
+</html>

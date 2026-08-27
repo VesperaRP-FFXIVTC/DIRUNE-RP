@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRUNE | 入店須知</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/AK1Hbub.png">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="mobile-notice">
+        <div class="notice-content">
+            <h2>📢 溫馨提示</h2>
+            <p>為了確保您瀏覽官網的體驗，<br>請使用電腦瀏覽器開啟本網頁。</p>
+            <div class="pc-icon">💻</div>
+        </div>
+    </div>
+
+   <!-- 音樂播放器 -->
+    <!-- 💥 加上 autoplay 屬性，告訴瀏覽器我們想自動播放 -->
+    <audio id="bgm" autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/3h5gixndlak2mgygluquq/Track-in-Time-Piano-Version.mp3?rlkey=zofpza1p3lwamce0xu95jfpjs&st=l4lzlxlu&raw=1" type="audio/mpeg">
+    </audio>
+    <div class="music-toggle" id="musicBtn">
+        <span id="music-icon">🎵</span>
+        <span class="music-text">BGM OFF</span>
+    </div>
+
+    <!-- 導覽列 -->
+   <header>
+       <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="menu.html">MENU</a></li>
+            <li><a href="cats.html">CATS</a></li>
+            <li><a href="rules.html"class="active">RULES</a></li>
+            <li><a href="booking.html">BOOKING</a></li>
+            <li><a href="bingo.html">BINGO</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- 中間的肉：RULES 專屬內容 -->
+    <div id="rules" class="page active">
+        <div class="rules-wrapper">
+            <h1 class="section-title">Rules & Guidelines</h1>
+            <p class="rules-intro">歡迎來到 DIRUNE！為了確保你在這裡可以得到最完美的體驗，請在享用服務前閱讀以下規範：</p>
+
+            <div class="rules-container">
+                <div class="rules-category">
+                    <div class="category-header">
+                        <span class="icon">☕</span>
+                        <h3>基本服務與流程</h3>
+                    </div>
+                    <ul class="rules-list">
+                        <li>本店定位為「交流互動貓咪咖啡廳」，服務內容僅限於陪伴、聊天、音樂演奏及菜單上的項目。</li>
+                        <li>為確保服務流程順暢，相關服務將在點單並付款後正式進行。</li>
+                    </ul>
+                </div>
+
+                <div class="rules-category highlight">
+                    <div class="category-header">
+                        <span class="icon">🐾</span>
+                        <h3>社交與 RP 禮儀</h3>
+                    </div>
+                    <ul class="rules-list">
+                        <li class="danger">嚴禁涉及一切性暗示、情色話題。一經發現，我們將立即停止服務並列入黑名單。</li>
+                        <li>貓咪們以「輕 RP」為主調服務，禁止打探現實資訊（如性別、年齡等現實世界隱私）。</li>
+                        <li>請勿對貓咪提出令人不適的要求，貓咪有權拒絕互動並回報店長處理。</li>
+                        <li>營業時間外貓咪為普通玩家，嚴禁騷擾、跟蹤或探查 RP 設定以外的個人隱私。</li>
+                        <li class="joy">最後最重要的規則：請在這裡玩得開心！</li>
+                    </ul>
+                </div>
+
+                <div class="rules-category">
+                    <div class="category-header">
+                        <span class="icon">📷</span>
+                        <h3>攝影與社群分享</h3>
+                    </div>
+                    <ul class="rules-list">
+                        <li>進行拍攝前請取得貓咪同意，或與其商量合照服務（本店目前無此固定品項）。</li>
+                        <li>若使用與「魔法」有關的拍攝工具，請勿公開上傳至社交平台（濾鏡不在此限）。</li>
+                        <li>分享照片至社群（如 Threads、FB、IG、噗浪）請標記照片中之店員或店長 Inu，並加上 Tag：#DIRUNEFFXIVTC。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" alt="Large Menu">
+    </div>
+    <footer>
+        FINAL FANTASY XIV © 2010 - 2026 SQUARE ENIX CO., LTD. All Rights Reserved.
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

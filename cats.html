@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRUNE | 貓咪店員</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/AK1Hbub.png">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="mobile-notice">
+        <div class="notice-content">
+            <h2>📢 溫馨提示</h2>
+            <p>為了確保您瀏覽官網的體驗，<br>請使用電腦瀏覽器開啟本網頁。</p>
+            <div class="pc-icon">💻</div>
+        </div>
+    </div>
+
+  <!-- 音樂播放器 -->
+    <!-- 💥 加上 autoplay 屬性，告訴瀏覽器我們想自動播放 -->
+    <audio id="bgm" autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/3h5gixndlak2mgygluquq/Track-in-Time-Piano-Version.mp3?rlkey=zofpza1p3lwamce0xu95jfpjs&st=l4lzlxlu&raw=1" type="audio/mpeg">
+    </audio>
+    <div class="music-toggle" id="musicBtn">
+        <span id="music-icon">🎵</span>
+        <span class="music-text">BGM OFF</span>
+    </div>
+
+    <!-- 導覽列 -->
+   <header>
+       <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="menu.html">MENU</a></li>
+            <li><a href="cats.html"class="active">CATS</a></li>
+            <li><a href="rules.html">RULES</a></li>
+            <li><a href="booking.html">BOOKING</a></li>
+            <li><a href="bingo.html">BINGO</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- 中間的肉：CATS 專屬內容 -->
+  <!-- 中間的肉：CATS 拍立得牆 -->
+    <div id="cats" class="page active">
+        <div class="cats-wrapper" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px 100px; text-align: center;">
+            <h1 class="section-title" style="color: #5d4037;">Our Cats</h1>
+            <p class="section-subtitle">點擊拍立得，認識你的專屬貓咪</p>
+            
+            <!-- JS 會在這裡動態產生拍立得相片 -->
+            <div id="polaroid-gallery" class="polaroid-grid"></div>
+        </div>
+    </div>
+
+    <!-- 貓咪詳細介紹彈窗 (預設隱藏) -->
+    <div id="cat-modal" class="modal-overlay" onclick="closeCatModal(event)">
+        <div class="cat-modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal-btn" onclick="closeCatModal()">✕</button>
+            
+            <!-- 彈窗左側：放大版拍立得 -->
+            <div class="modal-left">
+                <div class="modal-polaroid-frame">
+                    <img id="modal-img" src="" alt="Cat">
+                </div>
+            </div>
+            
+            <!-- 彈窗右側：詳細文字介紹 -->
+            <div class="modal-right">
+                <h2 id="modal-name" class="modal-name"></h2>
+                
+                <!-- 新增：MBTI 與 貓咪類型標籤 -->
+                <div class="modal-tags">
+                    <span id="modal-mbti" class="cat-tag mbti-tag"></span>
+                    <span id="modal-cattype" class="cat-tag type-tag"></span>
+                </div>
+                
+                <div class="modal-meta">
+                    <p><strong>性別：</strong><span id="modal-gender"></span></p>
+                    <p><strong>種族：</strong><span id="modal-race"></span></p>
+                    <p><strong>喜好：</strong><span id="modal-like"></span></p>
+                    <p><strong>個性：</strong><span id="modal-personality"></span></p>
+                </div>
+                <hr class="modal-divider">
+                <div class="modal-bio" id="modal-bio"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" alt="Large Menu">
+    </div>
+    <footer>
+        FINAL FANTASY XIV © 2010 - 2026 SQUARE ENIX CO., LTD. All Rights Reserved.
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

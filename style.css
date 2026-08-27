@@ -1,0 +1,1296 @@
+@import url('https://cdn.jsdelivr.net/npm/jf-openhuninn@1.1.2/jf-openhuninn.min.css');
+:root {
+    --bg-base: #dccdc0; 
+    --bg-card: #c9b9a8; 
+    --text-main: #5d4037; 
+    --text-light: rgba(255, 255, 255, 0.9);
+    --nav-bg: rgba(45, 65, 75, 0.85); 
+    --accent: #81d4fa; 
+    --accent-soft: rgba(129, 212, 250, 0.2);
+    --dirune-bg: #e2d5c5;
+    --dirune-card: #f5ede2;
+    --dirune-brown: #5d4037;
+    --dirune-accent: #8D6E63;
+}
+
+body, html {
+    margin: 0; padding: 0;
+    height: 100%; width: 100%;
+    font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    overflow: hidden;
+}
+
+/* Header & Nav */
+header {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 85px;
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+nav ul {
+    list-style: none; display: flex; gap: 65px;
+    margin: 0; padding: 0;
+}
+
+nav ul li {
+    font-family: "Microsoft JhengHei", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0; /* 修改這裡以配合 a 標籤 */
+}
+
+nav ul li.leave-btn {
+    border-left: 1px solid rgba(212, 175, 55, 0.3);
+    margin-left: 15px; padding-left: 20px;
+}
+
+/* Transitions */
+.page {
+    position: absolute;
+    top: 85px; 
+    left: 0; 
+    width: 100%; 
+    height: calc(100vh - 85px);
+    opacity: 0; 
+    visibility: hidden;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(25px);
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; 
+}
+
+#home {
+    background-image: url('Image/Home.png'); 
+    background-size: cover; background-position: center; z-index: 1;
+}
+
+/* Landing Page Styles */
+#landing-page {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #000; display: flex; justify-content: center; align-items: center;
+    z-index: 10000; transition: opacity 1s ease; color: #f5f5f5; overflow: hidden;
+}
+
+.landing-container { display: flex; width: 100%; height: 100%; position: relative; z-index: 10; justify-content: center; }
+
+.vespera-core {
+    flex: 0 0 450px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 20px 60px; z-index: 20;
+}
+
+.vespera-title { font-size: 3.5rem; letter-spacing: 15px; margin-bottom: 0px; color: #d4af37 !important; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6) !important; }
+.vespera-story { font-size: 1.2rem !important; line-height: 2.2 !important; color: rgba(255, 255, 255, 0.95) !important; }
+
+.split-section { flex: 1; max-width: 600px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: all 0.5s ease; position: relative; }
+
+/* About Card Styles */
+#about {
+    display: block;
+    position: absolute; 
+    top: 85px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 85px); 
+    padding-top: 10px;    
+    padding-bottom: 300px; 
+    overflow-y: scroll;   
+    -webkit-overflow-scrolling: touch;
+}
+
+.about-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 40px; 
+    min-height: min-content; 
+}
+
+.rules-card-content {
+    flex: 1; 
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;  
+}
+
+.rules-text {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.rules-text p {
+    font-size: 1.05rem;
+    line-height: 2.2; 
+    color: var(--text-main);
+    margin-bottom: 10px;
+    font-weight: bold; 
+}
+
+.rules-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.rules-intro {
+    color: var(--text-main);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 100px;
+}
+
+.rules-category {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 30px 40px;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: transform 0.3s ease;
+}
+
+.rules-category:hover {
+    transform: translateY(-5px);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 10px;
+}
+
+.category-header .icon {
+    font-size: 1.5rem;
+}
+
+.category-header h3 {
+    margin: 0;
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+.rules-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rules-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #5d4037;
+}
+
+.rules-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.rules-list li.danger {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.rules-list li.joy {
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 25px;
+    text-align: center;
+    padding-left: 0;
+}
+.rules-list li.joy::before { content: ""; }
+
+@media (max-width: 600px) {
+    .rules-category { padding: 25px; }
+}
+
+.about-footer-logo {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; 
+    padding-right: 80px;          
+    padding-top: 0;            
+    margin-top: 0px;         
+    padding-bottom: 0px;     
+}
+
+.footer-brand-logo {
+    max-width: 250px; 
+    width: 100%;
+    max-height: 120px;
+    display: block;
+    opacity: 0;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+}
+
+.section-subtitle {
+    font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-main);
+    margin-top: -10px;          
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.section-title {
+    margin-top: 10px;           
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+    color: var(--text-main);
+    text-align: center;
+}
+
+.about-card { 
+    display: flex; 
+    max-width: 1050px; 
+    width: 95%; 
+    background-color: var(--bg-card); 
+    border-radius: 35px; 
+    overflow: hidden; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+    margin-top: 50px;           
+    margin-bottom: 40px;        
+}
+
+.about-content {
+    flex: 1.5;
+    padding: 40px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    text-align: center;
+}
+.discord-center-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.discord-pill-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    background-color: #5865F2; 
+    color: white !important;
+    padding: 10px 25px;
+    border-radius: 50px; 
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.discord-pill-button:hover {
+    transform: scale(1.05);
+}
+
+.discord-img-large {
+    width: 50px; 
+    height: auto;
+    display: block;
+}
+
+.story-lines p {
+    margin-bottom: 10px;
+    line-height: 1.8;
+    font-size: 1rem;
+    color: #5d4037;
+}
+.about-image { flex: 1; min-height: 600px; }
+.about-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.service-intro-card {
+    background-color: #c9b9a8 !important;
+    border-radius: 25px;
+    padding: 40px;
+    margin-bottom: 60px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border: 2px dashed #8D6E63;
+    text-align: left;
+}
+
+.intro-header {
+    font-size: 1.6rem;
+    color: var(--dirune-brown);
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.intro-subtitle {
+    color: var(--dirune-brown);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.intro-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background-color: #ece1d6 !important;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.item-text strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.item-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #5d4037;
+}
+
+.dual-menu-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#menu .section-title {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 40px; 
+}
+
+.menu-wrapper {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+    padding-bottom: 70px;
+}
+
+.menu-photo-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-photo-shadow {
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-photo-shadow:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+}
+
+.menu-jpg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.category-title {
+    font-size: 1.5rem;
+    color: var(--dirune-brown);
+    border-bottom: 2px solid var(--dirune-accent);
+    padding-bottom: 12px;
+    margin-bottom: 40px;
+    display: inline-block;
+}
+
+.attractor-tip {
+    font-size: 0.9rem;
+    color: #795548;
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.menu-image-container {
+    margin-top: 40px;
+}
+
+.book-container {
+    display: flex; justify-content: center; align-items: center;
+    min-height: 85vh; padding: 40px 20px; perspective: 2000px;
+}
+
+.book {
+    display: flex; width: 1000px; height: 680px;
+    background: #fdfaf1; box-shadow: 20px 20px 60px rgba(0,0,0,0.4);
+    border-radius: 5px 20px 20px 5px; position: relative;
+    border: 1px solid #dcd1ba; transition: transform 0.8s ease-in-out;
+}
+
+.book-cover {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center; z-index: 100;
+    cursor: pointer; transition: transform 1s, opacity 0.6s;
+    border-radius: 5px 20px 20px 5px; overflow: hidden;
+}
+
+.cover-overlay {
+    width: 100%; height: 100%; background: rgba(93, 64, 55, 0.4);
+    display: flex; justify-content: center; align-items: center;
+}
+
+.book:not(.closed) .book-cover {
+    transform: rotateY(-120deg); transform-origin: left;
+    opacity: 0; pointer-events: none;
+}
+
+.cover-content {
+    text-align: center; color: #fff; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    padding: 30px 40px; max-width: 400px; margin: 0 auto;
+    border: 3px solid #d4af37; position: relative;
+}
+
+.cover-subtitle {
+    font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    font-size: 2.5rem; margin-top: 0; margin-bottom: 0;
+    font-weight: bold; color: #d4af37; letter-spacing: 5px;
+}
+
+.cover-hint {
+    margin-top: 40px; font-size: 1.2rem;
+    background: rgba(212, 175, 55, 0.9); color: #5d4037;
+    padding: 12px 25px; border-radius: 50px; font-weight: bold;
+    font-family: "Microsoft JhengHei", sans-serif;
+    animation: pulse 2s infinite; display: inline-block;
+}
+
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+.book-page { flex: 1; padding: 50px; display: flex; flex-direction: column; }
+.book.closed .book-page { opacity: 0; }
+.left-page { background: #fcf8ec; border-right: 1px solid rgba(0,0,0,0.1); justify-content: center; }
+
+.book-img-wrapper {
+    width: 100%; aspect-ratio: 3/4; border: 12px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15); overflow: hidden;
+    border: 5px solid #c9b9a8; transition: all 0.3s ease;
+}
+.left-page:has(img[alt="Inu"]) .book-img-wrapper { border: 5px double #d4af37 !important; }
+.book-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+.right-page {
+    background: #fdfaf1; font-family: "Microsoft JhengHei", sans-serif;
+    position: relative; padding-bottom: 120px;
+}
+
+.book-title {
+    font-size: 2.6rem; color: #5d4037; border-bottom: 3px solid #d4af37;
+    padding-bottom: 10px; margin-top: -10px; font-weight: bold;
+}
+
+.book-meta { margin-bottom: 10px; }
+.book-meta p { margin: 4px 0; font-size: 0.95rem; }
+
+.book-divider {
+    border: none; border-top: 1px solid rgba(93, 64, 55, 0.3);
+    margin: 10px 0; width: 100%;
+}
+
+.book-bio {
+    line-height: 1.6; color: #555; height: 260px; overflow-y: auto;
+    padding-right: 10px; margin-top: 5px; -webkit-overflow-scrolling: touch;
+}
+.book-bio::-webkit-scrollbar { width: 6px; }
+.book-bio::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 10px; }
+.book-bio::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+
+.book-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+
+.book-controls {
+    position: absolute; bottom: 50px; left: 50px; right: 50px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: inherit; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-btn { background: #5d4037; color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; }
+.nav-btn:hover { background: #d4af37; }
+
+.close-book-btn {
+    position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
+    background: none; border: 1px solid #ccc; color: #999; cursor: pointer;
+    border-radius: 5px; padding: 5px 15px; font-size: 0.8rem;
+}
+
+#bookName:has(span) { color: #5d4037; }
+
+.music-toggle { position: fixed; bottom: 80px; right: 30px; z-index: 2000; cursor: pointer; background: rgba(0,0,0,0.5); padding: 10px 20px; border-radius: 50px; color: white; display: flex; align-items: center; gap: 10px; }
+
+footer { position: fixed; bottom: 15px; width: 100%; text-align: center; font-size: 0.75rem; color: rgba(255, 255, 255, 0.5); z-index: 1000; pointer-events: none; }
+
+.lightbox-overlay { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); justify-content: center; align-items: center; }
+.lightbox-overlay img { max-width: 90%; max-height: 90%; border-radius: 5px; }
+
+.landing-bg-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    opacity: 0;
+    transition: all 0.8s ease;
+    z-index: 1;
+    pointer-events: none; 
+}
+
+#landing-page.bg-dirune .landing-bg-overlay { 
+    opacity: 1 !important; 
+    background-color: rgba(212, 175, 55, 0.25) !important;
+    background-image: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.4), transparent 70%) !important;
+}
+
+#landing-page.bg-noctis .landing-bg-overlay { 
+    opacity: 1 !important; 
+    background-color: rgba(75, 0, 130, 0.3) !important;
+    background-image: radial-gradient(circle at 80% 50%, rgba(138, 43, 226, 0.4), transparent 70%) !important;
+}
+
+@media (max-width: 768px) {
+    .dual-menu-row { flex-direction: column; }
+    .intro-grid { grid-template-columns: 1fr; }
+}
+
+#mobile-notice {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98); 
+    z-index: 9999; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #mobile-notice { display: flex; }
+    body { overflow: hidden; }
+}
+
+.notice-content h2 { color: #333; margin-bottom: 10px; }
+.notice-content p { color: #666; line-height: 1.6; font-size: 1.1rem; }
+.pc-icon { font-size: 50px; margin-top: 20px; }
+
+/* =========================================
+   新增補丁：導覽列超連結與分頁顯示修復
+   ========================================= */
+nav ul li { 
+    padding: 0; 
+    display: flex;
+    align-items: center;
+}
+
+nav ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    display: inline-block;
+    /* 這裡把左右內距變成 0，讓外框剛好等於文字寬度；5px 則是控制底線與文字的距離 */
+    padding: 5px 0; 
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover { color: #ffffff; }
+nav ul li a.active { color: #ffffff !important; opacity: 1; }
+
+nav ul li a::after {
+    content: ''; display: block; width: 0; height: 2px;
+    background-color: #66ccff; 
+    position: absolute;
+    bottom: 0px; /* 讓底線精準貼在 padding 留出的 5px 底下 */
+    left: 50%; transform: translateX(-50%);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 5px rgba(102, 204, 255, 0.5);
+}
+
+/* 將懸停與啟動的寬度設為 100%，因為我們拿掉了左右內距，現在的 100% 就會剛好等於英文字的寬度！ */
+nav ul li a:hover::after { width: 100%; }
+nav ul li a.active::after { width: 100% !important; background-color: #66ccff; box-shadow: 0 0 8px rgba(102, 204, 255, 0.6); }
+
+/* 以下保留原本的離開按鈕與分頁顯示修復，不需要動 */
+
+/* 獨立頁面顯示修復 */
+.page.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    position: relative; 
+    top: 85px; 
+    height: calc(100vh - 85px);
+}
+#home { position: absolute; }
+/* =========================================
+   DIRUNE 溫馨預約表單樣式
+   ========================================= */
+.dirune-booking-container {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border: 2px dashed var(--dirune-accent);
+}
+
+.booking-split-layout {
+    display: flex;
+    gap: 30px;
+}
+
+.booking-panel {
+    flex: 1;
+    background: var(--dirune-card);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+}
+
+@media (max-width: 768px) {
+    .booking-split-layout { flex-direction: column; }
+}
+
+.form-group { margin-bottom: 25px; text-align: left; }
+.form-group label {
+    display: block;
+    color: var(--dirune-brown);
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+input[type="text"], textarea, .custom-select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px;
+    border: 1px solid rgba(93, 64, 55, 0.2);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text-main);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+input[type="text"]:focus, textarea:focus, .custom-select:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+textarea { resize: none; }
+
+/* 網格排列系統 */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+/* 隱藏原生 Checkbox，打造互動方塊 */
+.select-item { position: relative; display: block; cursor: pointer; }
+.select-item input { position: absolute; opacity: 0; cursor: pointer; }
+
+.select-box {
+    padding: 10px;
+    text-align: center;
+    background: #fff;
+    border: 2px solid rgba(93, 64, 55, 0.1);
+    color: #888;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.select-item:hover input:not(:disabled) ~ .select-box {
+    border-color: var(--accent);
+    color: var(--text-main);
+}
+
+/* 打勾後的狀態：散發溫暖金光 */
+.select-item input:checked ~ .select-box {
+    background: #fff;
+    border-color: #d4af37;
+    color: #5d4037;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* 結帳面板 */
+.price-summary-box {
+    background: var(--bg-card);
+    padding: 20px 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border: 1px solid rgba(93, 64, 55, 0.1);
+}
+.price-row { display: flex; justify-content: space-between; color: var(--text-main); margin-bottom: 10px; font-size: 0.95rem; }
+.summary-divider { border: 0; border-top: 1px dashed rgba(93, 64, 55, 0.3); margin: 15px 0; }
+.price-total { display: flex; justify-content: space-between; color: var(--dirune-brown); font-size: 1.2rem; font-weight: bold; }
+
+/* 送出按鈕 */
+.submit-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--dirune-brown);
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(93, 64, 55, 0.2);
+}
+.submit-btn:hover {
+    background: #d4af37;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    color: #5d4037;
+}
+/* =========================================
+   DIRUNE 拍立得照片牆與彈窗 (完整版)
+   ========================================= */
+
+/* 1. 拍立得網格排版 */
+.polaroid-grid {
+    display: grid;
+    /* 💥 這裡改為 repeat(5, 1fr)，代表強制切成 5 等份 */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px; /* 稍微把間距縮小一點點，讓 5 張照片排起來更舒服 */
+    padding: 20px;
+}
+
+/* 📱 加上手機與平板的保護機制（很重要！） */
+/* 如果螢幕變小，自動減少一行顯示的張數，避免照片被擠到看不見 */
+@media (max-width: 1024px) {
+    .polaroid-grid {
+        grid-template-columns: repeat(3, 1fr); /* 平板尺寸變成一行 3 張 */
+    }
+}
+@media (max-width: 768px) {
+    .polaroid-grid {
+        grid-template-columns: repeat(2, 1fr); /* 手機尺寸變成一行 2 張 */
+        gap: 20px;
+    }
+}
+
+/* 2. 拍立得卡片本身 */
+.polaroid-card {
+    background: #fff;
+    /* 💥 調整這裡：上方與左右白邊變 18px，下方留白增加到 75px */
+    padding: 18px 18px 75px 18px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.polaroid-img-wrapper {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #e2d5c5;
+    overflow: hidden;
+}
+
+.polaroid-img-wrapper img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: filter 0.3s;
+    filter: sepia(10%); /* 微微的復古感 */
+}
+
+.polaroid-name {
+    position: absolute;
+    /* 💥 配合下方變寬的留白，把名字往上移到 22px 的高度 */
+    bottom: 22px; 
+    left: 0; width: 100%;
+    text-align: center;
+    font-family: 'jf-openhuninn', 'Arial Rounded MT Bold', 'Microsoft JhengHei', sans-serif; 
+    font-weight: bold; 
+    font-size: 1.2rem; 
+    color: #5d4037; 
+    letter-spacing: 2px;
+}
+
+/* 讓照片隨機左右微傾斜，更有生活感 */
+.polaroid-card:nth-child(even) { transform: rotate(3deg); }
+.polaroid-card:nth-child(odd) { transform: rotate(-3deg); }
+.polaroid-card:nth-child(3n) { transform: rotate(1deg); }
+
+/* 滑鼠懸停：擺正、放大、圖片變亮 */
+.polaroid-card:hover {
+    transform: translateY(-10px) rotate(0deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    z-index: 10;
+}
+.polaroid-card:hover .polaroid-img-wrapper img { filter: sepia(0%); }
+
+/* 3. 詳細介紹彈窗 (Modal) */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(45, 35, 30, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10000;
+    opacity: 0; visibility: hidden;
+    transition: all 0.4s ease;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+
+.cat-modal-content {
+    background: #fdfaf1;
+    width: 90%; max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #dcd1ba;
+}
+.modal-overlay.active .cat-modal-content { transform: translateY(0) scale(1); }
+
+.close-modal-btn {
+    position: absolute; top: 20px; right: 20px;
+    background: rgba(93, 64, 55, 0.1); border: none;
+    width: 35px; height: 35px; border-radius: 50%;
+    color: #5d4037; font-size: 1.2rem; cursor: pointer;
+    transition: 0.3s; z-index: 10;
+}
+.close-modal-btn:hover { background: #5d4037; color: #fff; }
+
+/* 彈窗左右排版 */
+.modal-left {
+    flex: 1; background: #e8dccb; padding: 40px;
+    display: flex; justify-content: center; align-items: center;
+}
+.modal-polaroid-frame {
+    background: #fff; 
+    /* 💥 讓彈窗裡的拍立得也維持 18px / 75px 的完美比例 */
+    padding: 18px 18px 75px 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%; max-width: 300px; transform: rotate(-2deg);
+}
+.modal-polaroid-frame img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+
+.modal-right {
+    flex: 1.5; padding: 40px 50px;
+    display: flex; flex-direction: column; overflow-y: auto; max-height: 80vh;
+}
+.modal-name { font-size: 2.5rem; color: #5d4037; margin: 0 0 10px 0; }
+
+/* MBTI 與性格標籤 */
+.modal-tags { display: flex; gap: 10px; margin-bottom: 25px; }
+.cat-tag {
+    padding: 5px 15px; border-radius: 50px; font-size: 0.85rem;
+    font-weight: bold; letter-spacing: 1px;
+}
+.mbti-tag { background: rgba(212, 175, 55, 0.2); color: #b58b00; border: 1px solid #d4af37; }
+.type-tag { background: rgba(129, 212, 250, 0.2); color: #0277bd; border: 1px solid #81d4fa; }
+
+.modal-meta p { margin: 8px 0; font-size: 0.95rem; color: #555; }
+.modal-meta p strong { color: #8D6E63; }
+.modal-divider { border: 0; border-top: 1px dashed rgba(93, 64, 55, 0.3); margin: 20px 0; }
+.modal-bio { line-height: 1.8; color: #5d4037; font-size: 0.95rem; text-align: justify; }
+
+@media (max-width: 768px) {
+    .cat-modal-content { flex-direction: column; max-height: 90vh; overflow-y: auto; }
+    .modal-left { padding: 30px; }
+    .modal-right { padding: 30px; }
+    .modal-polaroid-frame { max-width: 250px; padding: 10px 10px 40px 10px; }
+}
+
+/* =========================================
+   DIRUNE 貓咪肉球賓果樣式
+   ========================================= */
+.bingo-layout { display: flex; gap: 40px; margin-top: 40px; align-items: flex-start; }
+@media (max-width: 800px) { .bingo-layout { flex-direction: column; } }
+.bingo-play-area { flex: 1.2; background: var(--bg-card); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 2px dashed var(--dirune-accent); }
+
+/* 密碼解鎖畫面 */
+.lock-screen-container { background: #fdfaf1; padding: 50px 30px; border-radius: 15px; text-align: center; border: 2px dashed rgba(93, 64, 55, 0.3); box-shadow: inset 0 0 20px rgba(0,0,0,0.02); }
+.lock-icon { font-size: 4rem; margin-bottom: 15px; animation: pulseWarmGlow 3s infinite; }
+.lock-screen-container h3 { color: var(--dirune-brown); font-size: 1.8rem; margin: 0 0 10px 0; }
+.lock-desc { color: #666; font-size: 0.95rem; margin-bottom: 25px; }
+
+/* 搖獎機 */
+.draw-machine { background: #fff; padding: 20px; border-radius: 12px; margin-bottom: 25px; box-shadow: inset 0 0 15px rgba(0,0,0,0.05); }
+.draw-title { color: var(--dirune-brown); font-weight: bold; margin-bottom: 10px; letter-spacing: 2px; }
+.drawn-number-display { font-size: 3.5rem; font-family: 'Kalam', cursive; color: #d4af37; text-shadow: 0 0 10px rgba(212, 175, 55, 0.4); height: 80px; display: flex; justify-content: center; align-items: center; }
+.draw-btn { background: var(--dirune-brown); color: #fff; border: none; padding: 10px 20px; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: 0.3s; width: 80%; }
+.draw-btn:hover { background: #d4af37; color: #5d4037; }
+
+/* 5x5 賓果盤 */
+.bingo-board-container { background: #e2d5c5; padding: 15px; border-radius: 15px; box-shadow: inset 0 5px 15px rgba(0,0,0,0.1); }
+.ticket-serial { text-align: right; font-family: 'Courier New', monospace; color: #8D6E63; font-size: 0.95rem; margin-bottom: 12px; letter-spacing: 1.5px; border-bottom: 2px dotted rgba(93, 64, 55, 0.3); padding-bottom: 8px; font-weight: bold; }
+.bingo-board { 
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 8px; 
+    position: relative; /* 💥 補上這行，確保線條畫在九宮格內 */
+}
+
+/* 賓果格子 */
+.bingo-cell { 
+    aspect-ratio: 1; 
+    background: #fdfaf1; 
+    border-radius: 8px; 
+    display: flex; justify-content: center; align-items: center; 
+    font-size: 1.3rem; font-weight: bold; color: var(--dirune-brown); 
+    cursor: pointer; /* 💥 讓滑鼠移過去變成點擊的手指符號 */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+    border: 1px solid #dcd1ba; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    position: relative; 
+    user-select: none; 
+}
+
+/* 加上懸停效果，讓客人知道可以點擊 */
+.bingo-cell:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.bingo-cell.stamped { 
+    background: #ffe699; 
+    color: var(--dirune-brown); /* 💥 保持原本的數字顏色，不變透明 */
+    transform: scale(0.95); 
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+.bingo-cell.stamped::after { 
+    content: '🐾'; 
+    position: absolute; 
+    
+    /* 💥 加上這 5 行，把印章框框撐滿，並強制將肉球置中疊在數字上 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 2.2rem; 
+    color: rgba(220, 110, 110, 0.55); 
+    pointer-events: none; 
+    animation: stampPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+@keyframes stampPop { 0% { transform: scale(2); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* 右側規則區 */
+.bingo-rules-area { flex: 0.8; background: #fff; padding: 30px; border-radius: 20px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.rules-title { color: #d4af37; font-size: 1.4rem; border-bottom: 2px dashed #e2d5c5; padding-bottom: 10px; margin-bottom: 20px; }
+.prize-list { list-style: none; padding: 0; margin: 0 0 30px 0; }
+.prize-list li { margin-bottom: 15px; font-size: 0.95rem; line-height: 1.6; color: #555; }
+.prize-list li strong { color: var(--dirune-brown); }
+.rules-note { background: #fdfaf1; padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent); }
+.rules-note h4 { margin: 0 0 10px 0; color: var(--dirune-brown); }
+.rules-note p { margin: 5px 0; font-size: 0.85rem; color: #666; line-height: 1.5; }
+/* =========================================
+   賓果連線的畫線特效 
+   ========================================= */
+.bingo-strike-line {
+    position: absolute;
+    background-color: rgba(220, 110, 110, 0.85); /* 配合肉球的粉紅色印泥感 */
+    border-radius: 10px;
+    z-index: 10;
+    pointer-events: none; /* 讓滑鼠穿透，客人還是可以繼續點格子 */
+    box-shadow: 0 0 8px rgba(220, 110, 110, 0.5);
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+/* 水平、垂直、對角線的基準設定 */
+.strike-horizontal { height: 6px; width: 0; left: 2%; animation-name: drawLineH; } 
+.strike-vertical { width: 6px; height: 0; top: 2%; animation-name: drawLineV; } 
+.strike-diagonal { height: 6px; width: 0; left: 50%; top: 50%; animation-name: drawLineD; } 
+
+/* 畫線動畫：從零生長到填滿 */
+@keyframes drawLineH { to { width: 96%; } }
+@keyframes drawLineV { to { height: 96%; } }
+@keyframes drawLineD { to { width: 140%; } } /* 對角線長度約為邊長的 1.414 倍 */
+/* =========================================
+   BINGO 喊聲按鈕與鎖定狀態樣式
+   ========================================= */
+.bingo-shout-btn {
+    background: #d4af37; /* 尊榮的金黃色，吸引目光 */
+    color: #5d4037;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    letter-spacing: 2px;
+}
+
+.bingo-shout-btn:hover {
+    background: #ffca28;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.6);
+}
+
+/* 當卡片被鎖定時的樣式 */
+.bingo-board.locked {
+    pointer-events: none; /* 讓整個九宮格完全無法點擊 */
+    opacity: 0.85;
+    filter: grayscale(15%);
+}
+
+.bingo-shout-btn.locked-btn {
+    background: #9e9e9e !important;
+    color: #fff !important;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+/* =========================================
+   DIRUNE 客製化懸浮彈窗 (Modal)
+   ========================================= */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(44, 30, 25, 0.6); /* 溫暖的半透明毛玻璃底色 */
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeInModal 0.25s ease-out forwards;
+}
+
+.custom-modal-card {
+    background: #fffdf9;
+    border: 2px dashed #8D6E63;
+    border-radius: 20px;
+    padding: 35px 30px;
+    width: 90%;
+    max-width: 440px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    animation: popModal 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.modal-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.modal-title {
+    color: #5d4037;
+    font-size: 1.5rem;
+    margin: 0 0 12px 0;
+    font-weight: bold;
+}
+
+.modal-message {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0 0 25px 0;
+    white-space: pre-line; /* 支援換行符號 */
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-btn {
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.modal-cancel-btn {
+    background: #e0d6c9;
+    color: #5d4037;
+}
+
+.modal-cancel-btn:hover {
+    background: #d4c5b3;
+}
+
+.modal-confirm-btn {
+    background: #5d4037;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(93, 64, 55, 0.3);
+}
+
+.modal-confirm-btn:hover {
+    background: #d4af37;
+    color: #5d4037;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popModal {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+/* 置頂獨立規則區 (修正置中問題) */
+.top-rules-box {
+    background: #fdfaf1;
+    border: 2px dashed #dcd1ba;
+    border-radius: 15px;
+    padding: 25px 35px;
+    margin: 0 auto 30px auto; /* 置中這個大方塊 */
+    max-width: 900px;
+    text-align: left; /* 💥 強制裡面的文字全部置左 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.rules-header {
+    color: #d4af37;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px dotted #e2d5c5;
+    padding-bottom: 8px;
+}
+
+.rules-steps {
+    margin: 0;
+    padding-left: 22px;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* 實時開獎廣播區 */
+.live-draw-board {
+    background: #fff;
+    border: 2px solid #e2d5c5;
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.live-draw-title {
+    color: #8D6E63;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #e2d5c5;
+    padding-bottom: 5px;
+}
+
+.live-balls-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    min-height: 40px;
+    align-items: center;
+}
+
+/* 開出的號碼圓球 */
+.drawn-ball {
+    background: #d4af37;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(212, 175, 55, 0.4);
+    animation: popBall 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 最新的一顆球加上特殊閃爍與紅色邊框 */
+.drawn-ball.latest {
+    background: #d32f2f;
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.6);
+}
+
+@keyframes popBall { from { transform: scale(0); } to { transform: scale(1); } }
+/* =========================================
+   預約系統：貓咪變灰與鎖定樣式
+   ========================================= */
+.disabled-cat {
+    opacity: 0.4;
+    pointer-events: none; /* 讓滑鼠無法點擊 */
+    filter: grayscale(100%);
+    transition: all 0.3s;
+}
+
+.disabled-cat .select-box {
+    background: #f0f0f0;
+    border-color: #ccc;
+    color: #999;
+    box-shadow: none;
+}

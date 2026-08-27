@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRUNE | 首頁</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/AK1Hbub.png">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="overflow: hidden;"> <!-- 首頁不需要滾動 -->
+    
+    <div id="mobile-notice">
+        <div class="notice-content">
+            <h2>📢 溫馨提示</h2>
+            <p>為了確保您瀏覽官網的體驗，<br>請使用電腦瀏覽器開啟本網頁。</p>
+            <div class="pc-icon">💻</div>
+        </div>
+    </div>
+
+    <!-- 音樂播放器 -->
+    <!-- 💥 加上 autoplay 屬性，告訴瀏覽器我們想自動播放 -->
+    <audio id="bgm" autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/3h5gixndlak2mgygluquq/Track-in-Time-Piano-Version.mp3?rlkey=zofpza1p3lwamce0xu95jfpjs&st=l4lzlxlu&raw=1" type="audio/mpeg">
+    </audio>
+    <div class="music-toggle" id="musicBtn">
+        <span id="music-icon">🎵</span>
+        <span class="music-text">BGM OFF</span>
+    </div>
+
+    <!-- 導覽列 (改成真正的跳轉連結) -->
+    <header>
+       <nav>
+        <ul>
+            <li><a href="index.html" class="active">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="menu.html">MENU</a></li>
+            <li><a href="cats.html">CATS</a></li>
+            <li><a href="rules.html">RULES</a></li>
+            <li><a href="booking.html">BOOKING</a></li>
+            <li><a href="bingo.html">BINGO</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- 原本的 HOME 背景 -->
+    <div id="home" class="page active" style="height: calc(100vh - 85px);"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

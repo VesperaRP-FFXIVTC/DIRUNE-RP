@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRUNE | 關於我們</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/AK1Hbub.png">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="mobile-notice">
+        <div class="notice-content">
+            <h2>📢 溫馨提示</h2>
+            <p>為了確保您瀏覽官網的體驗，<br>請使用電腦瀏覽器開啟本網頁。</p>
+            <div class="pc-icon">💻</div>
+        </div>
+    </div>
+
+    <!-- 音樂播放器 -->
+    <!-- 💥 加上 autoplay 屬性，告訴瀏覽器我們想自動播放 -->
+    <audio id="bgm" autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/3h5gixndlak2mgygluquq/Track-in-Time-Piano-Version.mp3?rlkey=zofpza1p3lwamce0xu95jfpjs&st=l4lzlxlu&raw=1" type="audio/mpeg">
+    </audio>
+    <div class="music-toggle" id="musicBtn">
+        <span id="music-icon">🎵</span>
+        <span class="music-text">BGM OFF</span>
+    </div>
+
+    <!-- 導覽列 -->
+    <header>
+       <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html" class="active">ABOUT US</a></li>
+            <li><a href="menu.html">MENU</a></li>
+            <li><a href="cats.html">CATS</a></li>
+            <li><a href="rules.html">RULES</a></li>
+            <li><a href="booking.html">BOOKING</a></li>
+            <li><a href="bingo.html">BINGO</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- 中間的肉：ABOUT 專屬內容 -->
+    <div id="about" class="page active">
+        <div class="about-wrapper">
+            <h1 class="section-title">About DIRUNE</h1>
+            <p class="section-subtitle">泰坦｜海霧村｜10區30號</p>
+            
+            <div class="about-card">
+                <div class="about-content">
+                    <div class="text-top">
+                        <h3 class="owner-title">店長的話 / Owner's Message</h3>
+                        <div class="story-lines">
+                            <p>在艾奧傑亞的喧囂之外，我們建立了一個名為 **DIRUNE** 的避風港。</p>
+                            <p>這裡不只是一家咖啡廳，更是我們對「溫暖」與「貓咪」的所有想像。</p>
+                            <p>起初，這裡只是一個小小的想法，希望有一個空間，</p>
+                            <p>讓旅人們能放下武器與冒險的疲憊，靜靜地聽著流水聲，</p>
+                            <p>與毛茸茸的店員們度過一段無憂無慮的時光。</p>
+                            <p>無論你是獨自前來尋找寧靜，還是與好友共聚，</p>
+                            <p>DIRUNE 永遠留有一盞燈，與一抹淡淡的奶油焦糖香，等候你的到來。</p>
+                        </div>
+                    </div>
+                    <div class="discord-center-container">
+                        <a href="https://discord.gg/ep9aXhp7Yf" target="_blank" class="discord-pill-button">
+                            <img src="Image/Discord_icon.png" alt="Discord Icon" class="discord-img-large">
+                            <span>加入我們獲取最新消息</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="Image/AboutUS.png" alt="DIRUNE Owner">
+                </div>
+            </div>
+
+            <div class="about-card">
+                <div class="about-content rules-card-content">
+                    <h3 class="owner-title">入店須知 / Rules</h3>
+                    <div class="rules-text">
+                        <p>1. 進入本店，請將武器及寵物收起來，以免嚇到對氣味敏感的貓咪。</p>
+                        <p>2. 本店可隨意參觀，亦可隨意去撫摸頭上帶有「希望組隊」標誌的貓咪們。</p>
+                        <p>3. 本店試業期間入場費為 5,000 GIL。如需即場指名請私訊店長 Inu。</p>
+                        <p>4. 店內的每隻貓咪性格各異，請多與他們交流互動去了解他們吧！</p>
+                        <p>5. 本店不提供 ERP 服務，請在雙方都能接受的程度下暢談。</p>
+                        <p>6. 營業時間請密切留意店家 DC / Threads 獲得最新消息。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-footer-logo">
+                <img src="Image/DIRUNE_Logo.png" alt="DIRUNE Logo" class="footer-brand-logo">
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" alt="Large Menu">
+    </div>
+    <footer>
+        FINAL FANTASY XIV © 2010 - 2026 SQUARE ENIX CO., LTD. All Rights Reserved.
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

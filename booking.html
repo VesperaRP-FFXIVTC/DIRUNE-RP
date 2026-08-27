@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRUNE | 預約陪伴</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/AK1Hbub.png">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 音樂播放器 -->
+   <!-- 音樂播放器 -->
+    <!-- 💥 加上 autoplay 屬性，告訴瀏覽器我們想自動播放 -->
+    <audio id="bgm" autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/3h5gixndlak2mgygluquq/Track-in-Time-Piano-Version.mp3?rlkey=zofpza1p3lwamce0xu95jfpjs&st=l4lzlxlu&raw=1" type="audio/mpeg">
+    </audio>
+    <div class="music-toggle" id="musicBtn">
+        <span id="music-icon">🎵</span>
+        <span class="music-text">BGM OFF</span>
+    </div>
+
+    <!-- 導覽列 -->
+    <header>
+       <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="menu.html">MENU</a></li>
+            <li><a href="cats.html">CATS</a></li>
+            <li><a href="rules.html">RULES</a></li>
+            <li><a href="booking.html" class="active">BOOKING</a></li>
+            <li><a href="bingo.html">BINGO</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- 預約表單內容 -->
+    <div id="booking" class="page active" style="overflow-y: auto;">
+
+            <div class="booking-wrapper" style="padding: 40px 20px 100px; max-width: 1000px; margin: 0 auto;">
+            <h1 class="section-title">Reservation</h1>
+            <p class="section-subtitle">預約你的專屬療癒時光</p>
+
+            <!-- 🛑 狀態 1：暫停預約公告 (當沒有營業日時，設定 display: block; / 營業時改為 display: none;) -->
+            <div id="booking-closed-message" style="display: block; text-align: center; padding: 60px 20px; background: #fdfaf1; border-radius: 15px; border: 2px dashed #8D6E63; margin: 30px 0;">
+                <div style="font-size: 3.5rem; margin-bottom: 15px;">💤</div>
+                <h2 style="color: #5d4037; margin-bottom: 15px; font-weight: bold;">下期營業時間籌備中</h2>
+                <p style="color: #666; font-size: 1.1rem; line-height: 1.8;">
+                    目前暫無可預約的時段，貓咪們正在養精蓄銳中！🐾<br>
+                    請密切關注我們的 Discord 公告，掌握最新班表與營業時間。
+                </p>
+            </div>
+
+            <!-- 🟢 狀態 2：預約表單本體 (當沒有營業日時，在 class 後面加上 style="display: none;" 將其隱藏) -->
+            <form id="diruneBookingForm" class="dirune-booking-container" style="display: none;">
+
+            <form id="diruneBookingForm" class="dirune-booking-container">
+                <div class="booking-split-layout">
+                    
+                  <!-- 🟢 左半邊：基本資料與時間 -->
+                    <div class="booking-panel">
+                        <div class="form-group">
+                            <label>🐾 冒險者名稱 / 暱稱</label>
+                            <input type="text" id="name" required placeholder="例如：Inu@泰坦">
+                        </div>
+                        <div class="form-group">
+                            <label>🐾 聯絡方式 (Discord ID)</label>
+                            <input type="text" id="contact" required placeholder="接收預約確認用">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>🐾 預約日期</label>
+                            <div class="date-group grid-2">
+                                <label class="select-item"><input type="radio" name="date" value="09/01" checked><div class="select-box">本週五 21:00-00:00</div></label>
+                                <label class="select-item"><input type="radio" name="date" value="09/02"><div class="select-box">本週六 21:00-00:00</div></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <!-- 💥 更新標題：標示最多 2 個時段與 5 分鐘 Buffer -->
+                            <label>🐾 預約時段 (單次最多 2 時段，含 5 分鐘換場緩衝)</label>
+                            <div class="time-group grid-3">
+                                <!-- 視覺上可以將時間標示得更明確，例如 21:00 - 21:25，剩下5分鐘為緩衝 -->
+                                <label class="select-item"><input type="checkbox" name="time" value="21:00" class="time-cb"><div class="select-box">21:00 - 21:25</div></label>
+                                <label class="select-item"><input type="checkbox" name="time" value="21:30" class="time-cb"><div class="select-box">21:30 - 21:55</div></label>
+                                <label class="select-item"><input type="checkbox" name="time" value="22:00" class="time-cb"><div class="select-box">22:00 - 22:25</div></label>
+                                <label class="select-item"><input type="checkbox" name="time" value="22:30" class="time-cb"><div class="select-box">22:30 - 22:55</div></label>
+                                <label class="select-item"><input type="checkbox" name="time" value="23:00" class="time-cb"><div class="select-box">23:00 - 23:25</div></label>
+                                <label class="select-item"><input type="checkbox" name="time" value="23:30" class="time-cb"><div class="select-box">23:30 - 23:55</div></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 🔴 右半邊：貓咪指名與結帳 -->
+                    <div class="booking-panel">
+                       <div class="form-group">
+                            <label>🐾 指名陪伴貓咪 (單選)</label>
+                            
+                            <!-- 讀取中的提示 -->
+                            <div id="cat-loading" style="color: #8D6E63; font-size: 0.95rem; font-weight: bold; margin-bottom: 10px;">
+                                📡 正在連線同步貓咪班表與可預約狀態...
+                            </div>
+                            
+                            <!-- 這裡面預設空著，JS 會自動依據 Google 試算表生成名單 -->
+                            <div class="pr-group grid-3" id="cat-selection" style="display: none;">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>🐾 誘惑工具</label>
+                            <select id="addon" class="custom-select">
+                                <option value="0">逗貓棒 - 與貓咪一起遊玩</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>🐾 備註 / 想對貓咪說的話</label>
+                            <textarea id="notes" rows="2" placeholder="有什麼特別的需求嗎？"></textarea>
+                        </div>
+
+                        <!-- 結帳面板 -->
+                        <div class="price-summary-box">
+                            <div class="price-row"><span>已選時段：</span><span><span id="display-periods">0</span> 個</span></div>
+                            <div class="price-row"><span>指名貓咪：</span><span><span id="display-cats">0</span> 隻</span></div>
+                            <hr class="summary-divider">
+                            <div class="price-total">
+                                <span>預計總金額：</span>
+                                <span><span id="total-amount">0</span> Gil</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">送 出 預 約</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html>

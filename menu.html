@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRUNE | 服務菜單</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/AK1Hbub.png">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="mobile-notice">
+        <div class="notice-content">
+            <h2>📢 溫馨提示</h2>
+            <p>為了確保您瀏覽官網的體驗，<br>請使用電腦瀏覽器開啟本網頁。</p>
+            <div class="pc-icon">💻</div>
+        </div>
+    </div>
+
+   <!-- 音樂播放器 -->
+    <!-- 💥 加上 autoplay 屬性，告訴瀏覽器我們想自動播放 -->
+    <audio id="bgm" autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/3h5gixndlak2mgygluquq/Track-in-Time-Piano-Version.mp3?rlkey=zofpza1p3lwamce0xu95jfpjs&st=l4lzlxlu&raw=1" type="audio/mpeg">
+    </audio>
+    <div class="music-toggle" id="musicBtn">
+        <span id="music-icon">🎵</span>
+        <span class="music-text">BGM OFF</span>
+    </div>
+
+    <!-- 導覽列 -->
+    <header>
+       <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="menu.html" class="active">MENU</a></li>
+            <li><a href="cats.html">CATS</a></li>
+            <li><a href="rules.html">RULES</a></li>
+            <li><a href="booking.html">BOOKING</a></li>
+            <li><a href="bingo.html">BINGO</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- 中間的肉：MENU 專屬內容 -->
+    <div id="menu" class="page active">
+        <div class="menu-wrapper">
+            <h1 class="section-title" style="color: #5d4037;">Special Menu</h1>
+            
+            <div class="service-intro-card">
+                <div class="intro-header">🐾 關於邂逅：隨緣的溫暖</div>
+                <p class="intro-subtitle">在 DIRUNE，我們不提供公式化的熱情，只期待最自然的邂逅。貓咪們擁有自由的靈魂，請享受這段隨性的陪伴。</p>
+                
+                <div class="intro-grid">
+                    <div class="intro-item">
+                        <span class="icon">✨</span>
+                        <div class="item-text">
+                            <strong style="color: #8D6E63;">主動呼喚</strong>
+                            <p style="margin-top: 8px;">
+                                嘗試對角色狀態為 
+                                <img src="Image/Available_Logo.png" alt="待機中" style="height: 20px; vertical-align: middle; margin: 0 5px;">
+                                的貓咪使用「撫摸」或「打招呼」，互動將由此展開。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="intro-item">
+                        <span class="icon">🐱</span>
+                        <div class="item-text">
+                            <strong style="color: #8D6E63;">自由意志</strong>
+                            <p style="margin-top: 8px;">互動的時間與方式由貓咪決定。若您輕聲呼喚，或許能換得一次心動的凝視。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="attractor-tip">若想增加與貓咪結緣的機會，歡迎參考下方菜單中的【誘惑工具】。</p>
+            </div>
+
+            <div class="menu-image-container">
+                <h2 class="category-title">Cat Attractors & Human Treats</h2>
+                
+                <div class="dual-menu-row">
+                    <div class="menu-photo-column">
+                        <div class="menu-photo-shadow">
+                            <img src="Image/Attractors_Menu.png" alt="Cat Attractors Menu" class="menu-jpg">
+                        </div>
+                    </div>
+
+                    <div class="menu-photo-column">
+                        <div class="menu-photo-shadow">
+                            <img src="Image/Menu.png" alt="Human Treats Menu" class="menu-jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" alt="Large Menu">
+    </div>
+    <footer>
+        FINAL FANTASY XIV © 2010 - 2026 SQUARE ENIX CO., LTD. All Rights Reserved.
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
