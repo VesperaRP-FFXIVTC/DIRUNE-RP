@@ -1294,3 +1294,62 @@ textarea { resize: none; }
     color: #999;
     box-shadow: none;
 }
+/* =========================================
+   貓咪圖鑑：職稱徽章
+   ========================================= */
+#modal-role {
+    background-color: #d4af37; /* 尊貴的金色背景 */
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-left: 15px; /* 和名字拉開一點距離 */
+    box-shadow: 0 2px 5px rgba(212, 175, 55, 0.4);
+    letter-spacing: 1px;
+    white-space: nowrap;
+    transform: translateY(3px); 
+}
+/* =========================================
+   貓咪圖鑑：彈窗左右切換按鈕
+   ========================================= */
+.cat-modal-content {
+    position: relative; /* 確保按鈕能以彈窗為基準定位 */
+}
+
+.cat-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fffdf9;
+    color: #8D6E63;
+    border: 2px solid #e2d5c5;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cat-nav-btn:hover {
+    background: #d4af37;
+    color: #fff;
+    border-color: #d4af37;
+    transform: translateY(-50%) scale(1.1); /* 懸停時稍微放大 */
+}
+
+/* 左右定位微調 (往外推一點才不會擋到照片和文字) */
+.cat-nav-btn.prev-btn {
+    left: -20px; 
+}
+
+.cat-nav-btn.next-btn {
+    right: -20px;
+}

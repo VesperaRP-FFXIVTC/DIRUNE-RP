@@ -58,6 +58,9 @@
     <div id="cat-modal" class="modal-overlay" onclick="closeCatModal(event)">
         <div class="cat-modal-content" onclick="event.stopPropagation()">
             <button class="close-modal-btn" onclick="closeCatModal()">✕</button>
+
+            <button id="prev-cat-btn" class="cat-nav-btn prev-btn">❮</button>
+        <button id="next-cat-btn" class="cat-nav-btn next-btn">❯</button>
             
             <!-- 彈窗左側：放大版拍立得 -->
             <div class="modal-left">
@@ -68,7 +71,10 @@
             
             <!-- 彈窗右側：詳細文字介紹 -->
             <div class="modal-right">
-                <h2 id="modal-name" class="modal-name"></h2>
+    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+        <h2 id="modal-name" class="modal-name" style="margin: 0;"></h2>
+        <span id="modal-role" style="display: none;"></span>
+    </div>
                 
                 <!-- 新增：MBTI 與 貓咪類型標籤 -->
                 <div class="modal-tags">
