@@ -169,13 +169,13 @@ const catStaff = [
        {
         name: "甜甜圈",
         gender: "Male",
-        race: "逐日之民",
-        mbti: "",
-        type: "",
-        like: "",
-        personality: "",
-        img: "Image/Donut.png",
-        bio: ""
+        race: "護月之民",
+        mbti: "INTJ-紫老貓",
+        type: "獨立無口型",
+        like: "睡覺、狂熱布丁愛好者",
+        personality: "較真，毒舌",
+        img: "Image/Donut.jpg",
+        bio: "「如果你是天，我就是地，我永遠會是你的對立面。」"
     },
     {
         name: "艾里",
