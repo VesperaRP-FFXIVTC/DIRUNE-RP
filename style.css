@@ -1358,7 +1358,7 @@ textarea { resize: none; }
    ========================================= */
 .loyalty-container {
     max-width: 600px;
-    margin: 15vh auto;
+    margin: 15vh auto; /* 稍微把卡片往上提一點，原本可能是 15vh */
     padding: 30px;
     background: #fffdf9;
     border: 2px solid #e2d5c5;
@@ -1366,8 +1366,24 @@ textarea { resize: none; }
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     text-align: center;
     color: #6d4c41;
+
+    /* 👇 加上這兩行：限制最高高度，並允許卡片內部滑動 👇 */
+    max-height: 75vh;  /* 卡片最高只會佔螢幕的 75% */
+    overflow-y: auto;  /* 內容超過時，自動出現內部捲軸 */
 }
 
+/* 👇 順便在下方加上這段，把預設醜醜的灰色捲軸變成「質感金」 👇 */
+.loyalty-container::-webkit-scrollbar {
+    width: 8px;
+}
+.loyalty-container::-webkit-scrollbar-thumb {
+    background: #d4af37; /* 質感金 */
+    border-radius: 10px;
+}
+.loyalty-container::-webkit-scrollbar-track {
+    background: #fdfaf1; /* 溫暖的底色 */
+    border-radius: 10px;
+}
 /* 區塊切換 (預設隱藏，加上 active 才會顯示) */
 .loyalty-section {
     display: none;
@@ -1569,4 +1585,96 @@ textarea { resize: none; }
     50% { transform: translate(2px, 3px) rotate(1deg); }
     75% { transform: translate(-2px, -3px) rotate(-1deg); }
     100% { transform: translate(2px, 2px) rotate(0deg); }
+}
+/* =========================================
+   VIP 獎勵兌換目錄樣式
+   ========================================= */
+.reward-box {
+    background: #fff;
+    border: 2px solid #f0e6d2;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 25px auto 20px auto;
+    text-align: left; /* 讓文字靠左對齊，比較好閱讀 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    width: 90%;
+}
+
+.reward-title {
+    color: #d4af37;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    border-bottom: 2px dashed #f0e6d2;
+    padding-bottom: 10px;
+}
+
+/* 個別獎品卡片 */
+.reward-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fdfaf1;
+    border-radius: 10px;
+    border-left: 4px solid #d4af37; /* 左側有一條質感的金線 */
+}
+
+.reward-points {
+    background: #d4af37;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.reward-content h4 {
+    margin: 0 0 5px 0;
+    color: #6d4c41;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.reward-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #8d6e63;
+    line-height: 1.6;
+}
+
+/* 不含哈氣的紅色提示字 */
+.highlight-text {
+    color: #d32f2f;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* 規則說明區 */
+.reward-rules {
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #795548;
+    border: 1px solid #e2d5c5;
+}
+
+.reward-rules h4 {
+    margin: 0 0 10px 0;
+    color: #6d4c41;
+    font-size: 1.05rem;
+}
+
+.reward-rules ul {
+    margin: 0;
+    padding-left: 22px;
+    line-height: 1.6;
+}
+
+.reward-rules li {
+    margin-bottom: 8px;
 }
