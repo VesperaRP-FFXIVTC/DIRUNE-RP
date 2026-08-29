@@ -1353,3 +1353,220 @@ textarea { resize: none; }
 .cat-nav-btn.next-btn {
     right: -20px;
 }
+/* =========================================
+   會員集點卡系統 UI 樣式
+   ========================================= */
+.loyalty-container {
+    max-width: 600px;
+    margin: 15vh auto;
+    padding: 30px;
+    background: #fffdf9;
+    border: 2px solid #e2d5c5;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    color: #6d4c41;
+}
+
+/* 區塊切換 (預設隱藏，加上 active 才會顯示) */
+.loyalty-section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+.loyalty-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.loyalty-title {
+    font-size: 2rem;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+.loyalty-desc {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #8d6e63;
+}
+
+/* 輸入框與按鈕 */
+.loyalty-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+#character-name-input {
+    width: 80%;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #e2d5c5;
+    border-radius: 30px;
+    text-align: center;
+    background: #fdfaf1;
+    color: #6d4c41;
+    outline: none;
+    transition: all 0.3s ease;
+}
+#character-name-input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.loyalty-btn {
+    background: #d4af37;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+.loyalty-btn:hover {
+    transform: translateY(-2px);
+    background: #c59b27;
+}
+.loyalty-btn-outline {
+    background: transparent;
+    color: #8d6e63;
+    border: 2px solid #e2d5c5;
+    padding: 10px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+}
+.loyalty-btn-outline:hover {
+    background: #f0e6d2;
+}
+
+/* 🐾 實體集點卡設計 🐾 */
+.stamp-card {
+    background: #fff9eb;
+    border: 2px dashed #d4af37;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+}
+.stamp-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 欄 */
+    gap: 15px;
+}
+.stamp-slot {
+    aspect-ratio: 1 / 1;
+    border: 2px solid #e2d5c5;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background: #fff;
+    color: transparent; /* 預設文字透明 (沒蓋章) */
+    transition: all 0.3s ease;
+}
+.stamp-slot.stamped {
+    border-color: #d4af37;
+    background: #fdfaf1;
+    color: #d4af37; /* 顯示金色貓爪印 */
+    text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.4);
+    transform: scale(1.05) rotate(-5deg); /* 蓋章看起來有點不規則 */
+}
+
+/* 推銷方塊 */
+.promo-box {
+    background: #fff9eb;
+    border: 1px solid #f0e6d2;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 85%;
+}
+.promo-box h3 {
+    color: #d4af37;
+    margin-top: 0;
+}
+/* =========================================
+   彩蛋：哈氣貓咪遮罩 & 危險警告視窗
+   ========================================= */
+.hiss-overlay {
+    display: none; /* 預設完全隱藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* 極致黑的背景，遮住整個網頁 */
+    z-index: 9999; 
+    justify-content: center;
+    align-items: center;
+}
+
+.hiss-overlay.active {
+    display: flex; /* 觸發時才會顯示 */
+}
+
+.hiss-content {
+    text-align: center;
+    animation: popIn 0.3s ease-out; /* 彈出來的動畫 */
+}
+
+/* 貓咪圖片樣式：紅色光暈 + 震動 */
+.hiss-content img {
+    max-width: 300px; 
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
+    animation: shake 0.4s infinite;
+    margin-bottom: 30px;
+}
+
+/* 警告文字：血紅色發光 */
+.hiss-text {
+    color: #ff3333;
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+/* 求饒按鈕 */
+.hiss-btn {
+    background: #8b0000;
+    color: white;
+    border: 1px solid #ff3333;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.hiss-btn:hover {
+    background: #ff3333;
+    box-shadow: 0 0 15px #ff3333;
+    transform: scale(1.05);
+}
+
+/* 彈出與震動的動畫設定 */
+@keyframes popIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+    0% { transform: translate(2px, 2px) rotate(0deg); }
+    25% { transform: translate(-3px, -2px) rotate(-1deg); }
+    50% { transform: translate(2px, 3px) rotate(1deg); }
+    75% { transform: translate(-2px, -3px) rotate(-1deg); }
+    100% { transform: translate(2px, 2px) rotate(0deg); }
+}

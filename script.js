@@ -27,8 +27,8 @@ const catStaff = [
         name: "堡",
         gender: "Male",
         race: "護月之民",
-        mbti: "",
-        type: "",
+        mbti: "ISTP-藍老貓",
+        type: "冷靜觀察型",
         like: "錢、圓圓的東西",
         personality: "安靜獨立，為了得到想要的獎勵會主動貼人，拿到獎勵就跑",
         img: "Image/Bao.png",
@@ -104,12 +104,12 @@ const catStaff = [
         name: "貓糕",
         gender: "Male",
         race: "逐月之民",
-        mbti: "",
-        type: "",
+        mbti: "INFP-小蝴貓",
+        type: "靦腆黏人型",
         like: "喜歡趴在窗邊打盹，吃魚糕，放空",
         personality: "溫馴，怕生，但看到落單或害羞的客人有機會過去蹭蹭",
         img: "Image/MaoGao.png",
-        bio: "「要來一塊魚糕嗎？我親手做的哦。」<br><br>他會帶著自製的幸運魚糕， 悄悄地分給遇見的人。<br><br>沒有什麼特別的理由，只是希望你在這段旅程裡，可以輕鬆一點，開心一點。"
+        bio: "怕生慢熟，面對陌生的顧客會保持些許距離，平時也喜歡安靜地待在自己的角落。<br><br>熟悉之後便會卸下戒心，變得親人又愛撒嬌，偶爾還會黏著熟客討摸摸。"
     },
     {
         name: "Rayn",
@@ -451,3 +451,108 @@ document.querySelectorAll('.menu-photo-shadow img').forEach(img => {
         }
     };
 });
+// ==========================================
+// 🐾 會員集點卡系統 (前端測試版)
+// ==========================================
+// ==========================================
+// 🐾 會員集點卡系統 (真實 API 連線版)
+// ==========================================
+
+const GAS_API_URL = "https://script.google.com/macros/s/AKfycbxMu098rBiupmaydigx9_ePOAiU315Nvxiz2rg2eyT4gtl3I2JQ7Fyoj9AGJlmiESKq/exec";
+
+function mockSearch() {
+    const nameInput = document.getElementById('character-name-input').value.trim();
+    
+    if (nameInput === "") {
+        alert("請輸入角色名稱喔！");
+        return;
+    }
+
+  // 🚨 店長專屬彩蛋陷阱 (升級版)
+    if (nameInput.toLowerCase() === "inu" || nameInput.toLowerCase().includes("inu ")) {
+        const hissOverlay = document.getElementById('hiss-overlay');
+        hissOverlay.classList.add('active'); // 直接顯示我們自訂的紅光警告畫面
+        return; // 中斷執行，不往下查詢
+    }
+
+    // 將按鈕文字改成「查詢中...」製造真實感
+    const btn = document.getElementById('search-btn');
+    btn.innerText = "查詢中...";
+    btn.disabled = true;
+
+    // 👇 這裡才是真正的重頭戲：向你的 Google API 發送請求！
+    fetch(`${GAS_API_URL}?action=check&name=${encodeURIComponent(nameInput)}`)
+        .then(response => response.json())
+        .then(data => {
+            btn.innerText = "查詢點數";
+            btn.disabled = false;
+
+            if (data.success) {
+                // 如果 API 回傳 true，就把 API 給的名字跟點數畫到卡片上
+                showLoyaltyCard(data.name, data.points);
+            } else {
+                // 如果 API 回傳 false (找不到)，才顯示推銷畫面
+                showPromo(nameInput);
+            }
+        })
+        .catch(error => {
+            console.error('查詢失敗:', error);
+            alert("連線發生錯誤，請稍後再試！");
+            btn.innerText = "查詢點數";
+            btn.disabled = false;
+        });
+}
+
+// 顯示集點卡畫面
+function showLoyaltyCard(playerName, points) {
+    const totalSlots = 10; // 卡片總共 10 格
+    document.getElementById('vip-name-display').innerText = playerName;
+    document.getElementById('points-status').innerText = `目前點數: ${points} / ${totalSlots}`;
+    
+    // 生成貓爪印章格子
+    const grid = document.getElementById('stamp-grid');
+    grid.innerHTML = ""; // 先清空
+    
+    for (let i = 1; i <= totalSlots; i++) {
+        const slot = document.createElement('div');
+        // 如果這個格子小於等於現有點數，就加上蓋章樣式 (stamped)
+        if (i <= points) {
+            slot.className = "stamp-slot stamped";
+            slot.innerText = "🐾"; // 印章圖案
+        } else {
+            slot.className = "stamp-slot";
+            slot.innerText = "🐾"; // 隱形的圖案(撐開空間用)
+        }
+        grid.appendChild(slot);
+    }
+
+    // 切換畫面
+    switchSection('loyalty-card-section');
+}
+
+// 顯示推銷畫面 (查無資料)
+function showPromo(playerName) {
+    document.getElementById('not-found-name').innerText = playerName;
+    switchSection('loyalty-promo-section');
+}
+
+// 返回初始查詢畫面
+function resetLoyaltyUI() {
+    document.getElementById('character-name-input').value = "";
+    switchSection('loyalty-search-section');
+}
+
+// 控制區塊顯示的工具函式
+function switchSection(sectionId) {
+    // 把所有區塊隱藏
+    document.querySelectorAll('.loyalty-section').forEach(sec => {
+        sec.classList.remove('active');
+    });
+    // 顯示指定的區塊
+    document.getElementById(sectionId).classList.add('active');
+}
+// 關閉哈氣貓警告畫面
+function closeHiss() {
+    document.getElementById('hiss-overlay').classList.remove('active');
+    document.getElementById('character-name-input').value = ""; // 清空他輸入的名字
+}

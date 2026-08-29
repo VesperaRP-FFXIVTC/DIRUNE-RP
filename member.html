@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIRUNE - 會員專區</title>
+    
+    <!-- 🌟 最重要的一行：把 style.css 的衣服穿上！ -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <header>
+       <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="menu.html">MENU</a></li>
+            <li><a href="cats.html">CATS</a></li>
+            <li><a href="rules.html">RULES</a></li>
+            <li><a href="booking.html">BOOKING</a></li>
+            <li><a href="bingo.html">BINGO</a></li>
+            <li><a href="member.html" class="active">MEMBER</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- ==========================================
+         DIRUNE 會員集點卡系統 (前端介面)
+         ========================================== -->
+    <div class="loyalty-container">
+        
+        <!-- 狀態 1：查詢輸入框 -->
+        <div id="loyalty-search-section" class="loyalty-section active">
+            <h2 class="loyalty-title">🐾 VIP 會員集點查詢 🐾</h2>
+            <p class="loyalty-desc">請輸入您的角色全名</p>
+            <div class="loyalty-input-group">
+                <input type="text" id="character-name-input" placeholder="例如: Inu" autocomplete="off">
+                <button id="search-btn" class="loyalty-btn" onclick="mockSearch()">查詢點數</button>
+            </div>
+        </div>
+
+        <!-- 狀態 2：找到卡片 (成功畫面) -->
+        <div id="loyalty-card-section" class="loyalty-section">
+            <h2 class="loyalty-title">歡迎回來！</h2>
+            <p class="loyalty-desc"><strong id="vip-name-display">玩家名稱</strong> 的專屬集點卡</p>
+            
+            <div class="stamp-card">
+                <div class="stamp-grid" id="stamp-grid"></div>
+            </div>
+            
+            <p class="loyalty-status" id="points-status">目前點數: 0 / 10</p>
+            <p class="loyalty-reward-hint">🐾 集滿 10 點可兌換專屬大禮包 🐾</p>
+            <button class="loyalty-btn-outline" onclick="resetLoyaltyUI()">返回查詢</button>
+        </div>
+
+        <!-- 狀態 3：查無資料 (推銷畫面) -->
+        <div id="loyalty-promo-section" class="loyalty-section">
+            <h2 class="loyalty-title">😿 找不到集點卡紀錄</h2>
+            <p class="loyalty-desc" style="color: #d32f2f;">系統裡沒有找到 <strong id="not-found-name"></strong> 的紀錄喔！</p>
+            
+            <div class="promo-box">
+                <h3>✨ 解鎖專屬 VIP 福利 ✨</h3>
+                <p>今天在店內單次消費滿 <strong>100,000 Gil</strong>，<br>就能立刻解鎖您的專屬永久集點卡！</p>
+            </div>
+            
+            <button class="loyalty-btn-outline" onclick="resetLoyaltyUI()">返回重試</button>
+        </div>
+
+    </div>
+
+    <!-- 🚨 彩蛋：哈氣貓全螢幕遮罩 (升級版) -->
+    <div id="hiss-overlay" class="hiss-overlay">
+        <div class="hiss-content">
+            <img src="Image/Hajimi.gif" alt="哈氣的貓">
+            <h1 class="hiss-text">店長的東西你也敢偷看？<br>不要命了？</h1>
+            <button class="hiss-btn" onclick="closeHiss()">對不起我錯了...</button>
+        </div>
+    </div>
+
+    <!-- 🌟 把 JS 檔案牽過來，不然按鈕點了沒反應！ -->
+    <script src="script.js"></script>
+</body>
+</html>
