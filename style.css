@@ -1678,3 +1678,160 @@ textarea { resize: none; }
 .reward-rules li {
     margin-bottom: 8px;
 }
+/* =========================================
+   預約規則說明區塊
+   ========================================= */
+.booking-rules-box {
+    background: #fffdf9;
+    border: 2px solid #e2d5c5;
+    border-radius: 15px;
+    padding: 20px 25px;
+    margin: 20px auto 30px auto;
+    max-width: 600px; /* 配合表單寬度 */
+    color: #6d4c41;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.booking-rules-box h3 {
+    color: #d4af37;
+    margin-top: 0;
+    border-bottom: 2px dashed #e2d5c5;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.booking-rules-box ul {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.booking-rules-box li {
+    margin-bottom: 12px;
+}
+
+.booking-rules-box .highlight {
+    color: #d32f2f;
+    font-weight: bold;
+}
+/* =========================================
+   維梧爾專屬彈窗樣式
+   ========================================= */
+.wyal-overlay {
+    display: none; 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.65); 
+    z-index: 9999;
+    justify-content: center; align-items: center;
+}
+.wyal-overlay.active { 
+    display: flex; 
+}
+.wyal-modal-content {
+    background: #fffdf9; border: 2px solid #e2d5c5; border-radius: 20px;
+    padding: 30px; max-width: 500px; width: 90%; text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: popIn 0.3s ease-out;
+}
+.wyal-option {
+    background: #fdfaf1; border: 2px solid #e2d5c5; border-radius: 15px;
+    padding: 15px; margin-bottom: 15px; cursor: pointer; transition: 0.2s;
+}
+.wyal-option:hover {
+    border-color: #d4af37; box-shadow: 0 4px 10px rgba(212,175,55,0.2); 
+    transform: translateY(-3px);
+}
+.wyal-option h3 { margin: 0 0 8px 0; color: #5d4037; font-size: 1.2rem; }
+.wyal-option p { margin: 0; font-size: 0.95rem; line-height: 1.5; color: #795548; }
+
+.wyal-cancel-btn {
+    background: #e0d4c3; border: none; padding: 10px 25px; border-radius: 10px;
+    color: #5d4037; font-weight: bold; cursor: pointer; margin-top: 10px;
+}
+.wyal-cancel-btn:hover { background: #d1c1ab; }
+/* =========================================
+   預約頁面：圖鑑級動態浮動卡片 (防飛走版)
+   ========================================= */
+.booking-horizontal-card {
+    display: none; /* 預設隱藏，由 JS 的 .active 啟動變為 flex */
+    
+    /* 🎯 終極定位魔法：因為放在右面板內，所以 100% 就是剛好貼著右邊界！ */
+    position: absolute;
+    left: calc(100% + 20px); /* 貼著右面板，再往右推 20px 的完美空隙 */
+    top: 50px; /* 距離右面板頂部的距離，可依喜好微調 */
+    
+    width: 480px; /* 寬一點才能容納圖二的雙欄設計 */
+    background: #fdfaf1;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    padding: 25px;
+    z-index: 100;
+    border: 2px solid #e2d5c5;
+}
+
+.booking-horizontal-card.active {
+    display: flex; /* 啟動雙欄排列 */
+    gap: 25px;
+    animation: popInRightCard 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popInRightCard {
+    from { opacity: 0; transform: translateX(-20px) scale(0.95); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* 📸 左側：相紙與照片 (解決壓縮變形) */
+.bhc-left {
+    flex: 0 0 160px; /* 固定照片區塊寬度 */
+}
+.bhc-polaroid {
+    background: white;
+    padding: 8px 8px 30px 8px; /* 模仿拍立得下方留白 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transform: rotate(-3deg); /* 微微傾斜更有真實感 */
+    border: 1px solid #eee;
+}
+.bhc-polaroid img {
+    width: 100%;
+    height: auto; 
+    aspect-ratio: 3/4; /* 🌟 強制 3:4 比例裁切，保證照片絕對不壓縮變形！ */
+    object-fit: cover;
+    display: block;
+}
+
+/* 📝 右側：文字資訊區 */
+.bhc-right {
+    flex: 1;
+    text-align: left;
+}
+.bhc-name {
+    color: #5d4037; font-size: 1.8rem; margin: 0 0 10px 0; font-weight: bold;
+}
+.bhc-tags {
+    display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap;
+}
+.bhc-tag {
+    background: #f0e6d2; color: #6d4c41; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold;
+}
+.type-tag {
+    background: #e1f5fe; color: #0288d1; /* 藍色職業標籤 */
+}
+.bhc-details {
+    font-size: 0.9rem; color: #6d4c41; line-height: 1.8; margin-bottom: 15px;
+}
+.bhc-divider {
+    border: 0; border-top: 1px dashed #d7ccc8; margin: 15px 0;
+}
+.bhc-bio {
+    font-size: 0.95rem; color: #795548; line-height: 1.6; margin: 0; white-space: pre-line;
+}
+
+/* 📱 螢幕太小裝不下的時候，自動縮回表單正下方 */
+@media (max-width: 1500px) {
+    .booking-horizontal-card {
+        position: static; 
+        margin: 20px auto 0 auto;
+        width: 100%;
+    }
+}

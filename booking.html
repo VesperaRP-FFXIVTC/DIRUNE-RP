@@ -44,7 +44,7 @@
             <p class="section-subtitle">預約你的專屬療癒時光</p>
 
             <!-- 🛑 狀態 1：暫停預約公告 (當沒有營業日時，設定 display: block; / 營業時改為 display: none;) -->
-            <div id="booking-closed-message" style="display: block; text-align: center; padding: 60px 20px; background: #fdfaf1; border-radius: 15px; border: 2px dashed #8D6E63; margin: 30px 0;">
+            <div id="booking-closed-message" style="display: none; text-align: center; padding: 60px 20px; background: #fdfaf1; border-radius: 15px; border: 2px dashed #8D6E63; margin: 30px 0;">
                 <div style="font-size: 3.5rem; margin-bottom: 15px;">💤</div>
                 <h2 style="color: #5d4037; margin-bottom: 15px; font-weight: bold;">下期營業時間籌備中</h2>
                 <p style="color: #666; font-size: 1.1rem; line-height: 1.8;">
@@ -53,10 +53,21 @@
                 </p>
             </div>
 
-            <!-- 🟢 狀態 2：預約表單本體 (當沒有營業日時，在 class 後面加上 style="display: none;" 將其隱藏) -->
-            <form id="diruneBookingForm" class="dirune-booking-container" style="display: none;">
+            <!-- 📜 預約規則說明區塊 -->
+<div class="booking-rules-box">
+    <h3>📜 預約與指名規則</h3>
+    <ul>
+        <li><strong>一對一專屬：</strong>為減輕貓咪負擔，所有指名預約皆為<strong>一對一</strong>專屬服務。</li>
+        <li><strong>計時方式：</strong>所有時段均為每 30 分鐘一節，不足 30 分鐘亦以一節計算。每次預約最多可選擇 2 個時段（共 1 小時）。</li>
+        <li><strong>現場指名：</strong>歡迎到場時查看貓咪的預約狀態，並進行即場指名！</li>
+        <li><strong>【特別服務】維梧爾的秘密時光：</strong><br>你將獲得與維梧爾一同享用點心的機會！聽說還有特別禮物喔？<span class="highlight"><br>（附加費用 500,000 Gil，需另計基本指名費 50,000 Gil）</span>。本特別服務<strong>每次僅限預約 1 個時段（30分鐘）</strong>，且只有 <strong>21:30 / 22:30 / 23:30</strong> 三個特定時段可供選擇。<br>※每人只能預約一次，如有重複將會以較早的預約為準。<br>（以中之為準而非遊戲角色）</li>
+    </ul>
+</div>
 
+            <!-- 🟢 狀態 2：預約表單本體 (當沒有營業日時，在 class 後面加上 style="display: none;" 將其隱藏) -->
             <form id="diruneBookingForm" class="dirune-booking-container">
+
+            <form id="diruneBookingForm" class="dirune-booking-container" style="position: relative;">
                 <div class="booking-split-layout">
                     
                   <!-- 🟢 左半邊：基本資料與時間 -->
@@ -73,8 +84,7 @@
                         <div class="form-group">
                             <label>🐾 預約日期</label>
                             <div class="date-group grid-2">
-                                <label class="select-item"><input type="radio" name="date" value="09/01" checked><div class="select-box">本週五 21:00-00:00</div></label>
-                                <label class="select-item"><input type="radio" name="date" value="09/02"><div class="select-box">本週六 21:00-00:00</div></label>
+                                <label class="select-item"><input type="radio" name="date" value="9/21" checked><div class="select-box">9/21（一） 21:30-00:00</div></label>
                             </div>
                         </div>
 
@@ -83,7 +93,6 @@
                             <label>🐾 預約時段 (單次最多 2 時段，含 5 分鐘換場緩衝)</label>
                             <div class="time-group grid-3">
                                 <!-- 視覺上可以將時間標示得更明確，例如 21:00 - 21:25，剩下5分鐘為緩衝 -->
-                                <label class="select-item"><input type="checkbox" name="time" value="21:00" class="time-cb"><div class="select-box">21:00 - 21:25</div></label>
                                 <label class="select-item"><input type="checkbox" name="time" value="21:30" class="time-cb"><div class="select-box">21:30 - 21:55</div></label>
                                 <label class="select-item"><input type="checkbox" name="time" value="22:00" class="time-cb"><div class="select-box">22:00 - 22:25</div></label>
                                 <label class="select-item"><input type="checkbox" name="time" value="22:30" class="time-cb"><div class="select-box">22:30 - 22:55</div></label>
@@ -94,7 +103,7 @@
                     </div>
 
                     <!-- 🔴 右半邊：貓咪指名與結帳 -->
-                    <div class="booking-panel">
+                    <div class="booking-panel" style="position: relative;">
                        <div class="form-group">
                             <label>🐾 指名陪伴貓咪 (單選)</label>
                             
@@ -106,12 +115,14 @@
                             <!-- 這裡面預設空著，JS 會自動依據 Google 試算表生成名單 -->
                             <div class="pr-group grid-3" id="cat-selection" style="display: none;">
                             </div>
+                            <!-- ... 上面是 <div class="pr-group grid-3" id="cat-selection" style="display: none;"></div> ... -->
                         </div>
 
                         <div class="form-group">
                             <label>🐾 誘惑工具</label>
                             <select id="addon" class="custom-select">
                                 <option value="0">逗貓棒 - 與貓咪一起遊玩</option>
+                                <!-- 請根據你的 HTML 結構把這行加進選單裡 -->
                             </select>
                         </div>
 
@@ -132,13 +143,74 @@
                         </div>
 
                         <button type="submit" class="submit-btn">送 出 預 約</button>
+                        <!-- 📸 全新雙欄版型：橫式動態名片 (貼在結帳按鈕下面) -->
+                        <div id="booking-polaroid-card" class="booking-horizontal-card">
+                            <!-- 左側：傾斜拍立得照片 -->
+                            <div class="bhc-left">
+                                <div class="bhc-polaroid">
+                                    <img id="bp-img" src="" alt="貓咪照片">
+                                </div>
+                            </div>
+                            <!-- 右側：詳細資訊 -->
+                            <div class="bhc-right">
+                                <h3 id="bp-name" class="bhc-name">名字</h3>
+                                <div class="bhc-tags">
+                                    <span id="bp-mbti" class="bhc-tag"></span>
+                                    <span id="bp-type" class="bhc-tag type-tag"></span>
+                                </div>
+                                <!-- 詳細屬性區 (性別/種族等) -->
+                                <div id="bp-details" class="bhc-details"></div>
+                                <hr class="bhc-divider">
+                                <p id="bp-bio" class="bhc-bio"></p>
+                            </div>
+                        </div>
                     </div>
 
+                </div>
+                <!-- 📸 把拍立得貼在表單最底部，準備用 CSS 把它推出去 -->
+                <div id="booking-polaroid-card" class="booking-polaroid">
+                    <div class="bp-img-wrapper">
+                        <img id="bp-img" src="" alt="貓咪照片">
+                    </div>
+                    <h3 id="bp-name" class="bp-name">貓咪名字</h3>
+                    <div class="bp-tags">
+                        <span id="bp-mbti" class="bp-tag"></span>
+                        <span id="bp-type" class="bp-tag"></span>
+                    </div>
+                    <p id="bp-bio" class="bp-bio"></p>
                 </div>
             </form>
         </div>
     </div>
-
+<!-- 🎨 維梧爾專屬隱藏劇情彈窗 -->
+    <div id="wyal-modal" class="wyal-overlay">
+        <div class="wyal-modal-content">
+            <h2 style="color: #d4af37; margin-top:0;">🐾 維梧爾的專屬服務</h2>
+            <p style="color: #6d4c41; margin-bottom: 20px;">您指名了維梧爾，請選擇您想要的陪伴方式：</p>
+            
+            <!-- 選項 1：基礎預約 -->
+            <div id="btn-wyal-basic" class="wyal-option">
+                <h3>🐈 基礎陪伴</h3>
+                <p>享受與維梧爾溫柔寧靜的相處時光。<br><span style="color:#888; font-size:0.9rem;">(一般計費，每次最多可預約 2 個時段)</span></p>
+            </div>
+            
+            <!-- 選項 2：秘密時光 (贈送速寫) -->
+            <div id="btn-wyal-secret" class="wyal-option">
+                <h3>🎨 秘密時光 (福利贈送)</h3>
+                <p>指名購買一份專屬精緻茶點，將額外獲贈一張維梧爾為您繪製的速寫相片。<br><span style="color:#d32f2f; font-weight:bold; font-size:0.9rem;">(附加費用 500,000 Gil，僅限 21:30/22:30/23:30，每次限 1 個時段)</span></p>
+            </div>
+            
+            <button id="btn-wyal-cancel" class="wyal-cancel-btn">先選其他貓咪</button>
+        </div>
+    </div>
+    <!-- 🌟 全新升級：質感通用提示彈窗 -->
+    <div id="custom-alert-overlay" class="wyal-overlay">
+        <div class="wyal-modal-content">
+            <h2 id="custom-alert-title" style="color: #d4af37; margin-top:0;">🐾 系統提示</h2>
+            <p id="custom-alert-msg" style="color: #6d4c41; margin-bottom: 20px; line-height: 1.6; white-space: pre-wrap; font-size: 1.05rem;"></p>
+            <button id="custom-alert-btn" class="wyal-cancel-btn" style="background: #d4af37; color: white;">確 定</button>
+        </div>
+    </div>
     <script src="script.js"></script>
     <script src="booking.js"></script>
 </body>
