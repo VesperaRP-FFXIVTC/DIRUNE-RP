@@ -167,18 +167,27 @@
                     </div>
 
                 </div>
-                <!-- 📸 把拍立得貼在表單最底部，準備用 CSS 把它推出去 -->
-                <div id="booking-polaroid-card" class="booking-polaroid">
-                    <div class="bp-img-wrapper">
-                        <img id="bp-img" src="" alt="貓咪照片">
-                    </div>
-                    <h3 id="bp-name" class="bp-name">貓咪名字</h3>
-                    <div class="bp-tags">
-                        <span id="bp-mbti" class="bp-tag"></span>
-                        <span id="bp-type" class="bp-tag"></span>
-                    </div>
-                    <p id="bp-bio" class="bp-bio"></p>
-                </div>
+               <!-- 📸 全新雙欄版型：橫式動態名片 (貼在送出按鈕下面) -->
+<div id="booking-polaroid-card" class="booking-horizontal-card">
+    <!-- 左側：傾斜拍立得照片 -->
+    <div class="bhc-left">
+        <div class="bhc-polaroid">
+            <img id="bp-img" src="" alt="貓咪照片">
+        </div>
+    </div>
+    <!-- 右側：詳細資訊 -->
+    <div class="bhc-right">
+        <h3 id="bp-name" class="bhc-name">名字</h3>
+        <div class="bhc-tags">
+            <span id="bp-mbti" class="bhc-tag"></span>
+            <span id="bp-type" class="bhc-tag type-tag"></span>
+        </div>
+        <!-- 詳細屬性區 (性別/種族等) -->
+        <div id="bp-details" class="bhc-details"></div>
+        <hr class="bhc-divider">
+        <p id="bp-bio" class="bhc-bio"></p>
+    </div>
+</div>
             </form>
         </div>
     </div>
