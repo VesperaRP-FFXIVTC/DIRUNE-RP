@@ -12,6 +12,18 @@ const catStaff = [
         img: "Image/INU.png",
         bio: "「歡迎來到 DIRUNE。在這裡，時間是慢下來的。」<br><br>作為店長，Inu 總是安靜地守護著店內，因為店長身份的原因他只能壓抑自己沒辦法主動向顧客討摸，要是你可以主動去摸摸他、分享你的冒險故事，他絕對會很樂意一邊蹭著你的手一邊傾聽你的每一句說話。(以上全是唬爛)"
     },
+     {
+        name: "伊萊諾斯",
+        gender: "Male",
+        role: "RECEPTIONIST",
+        race: "山林之民",
+        mbti: "ENFJ-寶劍兔(貓)",
+        type: "為錢奔波型",
+        like: "錢",
+        personality: "溫和有禮，喜歡撸貓",
+        img: "Image/illainous.png",
+        bio: "「歡迎光臨，為甚麼會有兔子？我頭上這個是貓耳喔。」<br><br>不知為何踏進門迎接你的是維埃拉族的接待員，頭上除了長長的兔耳朵之外還有一對明顯是裝飾的耳朵。",
+    },
     {
         name: "斯咪",
         gender: "Male",
@@ -33,17 +45,6 @@ const catStaff = [
         personality: "安靜獨立，為了得到想要的獎勵會主動貼人，拿到獎勵就跑",
         img: "Image/Bao.png",
         bio: "「想摸我？可以。想留我？那麼你得拿出點誠意。」<br><br>他向來坦率，付出多少，就回應多少。<br>為了想要的東西，他可以貼得很近，近得讓人誤以為他願意留下。"
-    },
-    {
-        name: "蒼雨",
-        gender: "Male",
-        race: "護月之民",
-        mbti: "",
-        type: "",
-        like: "敲工匠，聊天",
-        personality: "表E裡I，充電型，高山茶當水喝",
-        img: "Image/ChangYu.png",
-        bio: "「你可以慢慢靠過來。<br>我會看著你——直到你不想走為止。」<br><br>他很少主動靠近人。<br>但只要你走過去，他就不會讓你太快離開。<br>至於原因——<br>你大概會在回過神之後才發現。"
     },
     {
         name: "赤羽",
@@ -112,17 +113,6 @@ const catStaff = [
         bio: "怕生慢熟，面對陌生的顧客會保持些許距離，平時也喜歡安靜地待在自己的角落。<br><br>熟悉之後便會卸下戒心，變得親人又愛撒嬌，偶爾還會黏著熟客討摸摸。"
     },
     {
-        name: "Rayn",
-        gender: "Male",
-        race: "逐日之民",
-        mbti: "",
-        type: "",
-        like: "爬高，聊天，吃鮭魚刺身，吃泡麵，拔貓毛，紅燒兔子",
-        personality: "非常被動，但搭上話就會變成話癆貓貓",
-        img: "Image/Rayn.png",
-        bio: "「居然被發現了？既然如此，就獎勵你陪我玩一下吧！」<br><br>會在各種謎之地點出現。<br>看似慵懶又隨心所欲的傢伙，實則一直在等待你的到來，要是主動一點，說不定能收穫他陽光開朗的一面。<br>聽說是薄荷口味的，要不要嚐嚐看呢？"
-    },
-    {
         name: "維梧爾",
         gender: "Male",
         race: "護月之民",
@@ -152,7 +142,7 @@ const catStaff = [
         type: "敏感膽小型",
         like: "畫圖、塗鴉",
         personality: "謹小慎微",
-        img: "Image/Meihua.jpg",
+        img: "Image/Meihua.png",
         bio: "「嗨，我是美華。」<br><br>剛認識時他可能看起來比較安靜或嚴肅，但他只是比較慢熱，需要一點時間去熟悉你。<br>只要你願意，他會慢慢地打開心房，和你分享他的想法與故事。"
     },
       {
@@ -189,17 +179,16 @@ const catStaff = [
         bio: "受不了家規而離家出走的富家少爺，受夠貴族禮儀奔向自由後開始放飛自我；但因沒帶多少盤纏於是四處打工賺旅費養活自己。<br><br>因為是偷跑出門，所以要小心翼翼的不能被家人發現，否則隨時會被抓回去繼承家業。"
     },
     {
-        name: "伊萊諾斯",
+        name: "終結",
         gender: "Male",
-        role: "RECEPTIONIST",
-        race: "山林之民",
-        mbti: "ENFJ-寶劍兔(貓)",
-        type: "為錢奔波型",
-        like: "錢",
-        personality: "溫和有禮，喜歡撸貓",
-        img: "Image/illainous.png",
-        bio: "「歡迎光臨，為甚麼會有兔子？我頭上這個是貓耳喔。」<br><br>不知為何踏進門迎接你的是維埃拉族的接待員，頭上除了長長的兔耳朵之外還有一對明顯是裝飾的耳朵。",
-    }
+        race: "逐日之民",
+        mbti: "ENFP-快樂小貓",
+        type: "共感陪伴型",
+        like: "攝影、發呆、傾聽",
+        personality: "對任何新奇的事物感到好奇、熟了之後會很E",
+        img: "Image/End.png",
+        bio: "「終於見面了，我等很久了呢！…嗯？我感受到你起伏的情緒…今天發生什麼事了？」<br>「雖然時間終有一刻會停下，但在結束之前…你願意說的話我都在喔。」<br><br>他緩緩趴在你腳邊，那金蔚交錯的雙瞳直直望著你，彷彿能看穿心底的一切。你正專注地凝視那對貓瞳，餘光卻忽然瞥見一抹雪白——是他的貓尾，輕輕掃過了你的指尖。"
+    },
 ];
 
 let currentIndex = 0;
@@ -350,22 +339,65 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// ==========================================
+// 📸 動態生成拍立得照片牆 (終極盒模型修復版)
+// ==========================================
 function renderPolaroids() {
     const gallery = document.getElementById('polaroid-gallery');
-    gallery.innerHTML = ''; // 清空容器
+    
+    // 拔掉最外層的網格
+    gallery.classList.remove('polaroid-grid');
+    
+    // 建立上下兩個區塊
+    gallery.innerHTML = `
+        <div id="special-staff-container" style="display: flex; justify-content: center; gap: 30px; margin-bottom: 50px;"></div>
+        <div id="regular-cats-container" class="polaroid-grid"></div>
+    `;
 
+    const specialContainer = document.getElementById('special-staff-container');
+    const regularContainer = document.getElementById('regular-cats-container');
+
+    // 產生卡片
     catStaff.forEach((cat, index) => {
-        // 動態生成 HTML
+        // 🚨 終極修復關鍵：在 style 裡面強制加上 box-sizing: border-box;
+        // 這樣瀏覽器就不會「雞婆地把白邊往外加」，導致上面的貓咪變胖！
         const cardHTML = `
-            <div class="polaroid-card" onclick="openCatModal(${index})">
+            <div class="polaroid-card" onclick="openCatModal(${index})" style="box-sizing: border-box;">
                 <div class="polaroid-img-wrapper">
                     <img src="${cat.img}" alt="${cat.name}" loading="lazy">
                 </div>
                 <div class="polaroid-name">${cat.name}</div>
             </div>
         `;
-        gallery.insertAdjacentHTML('beforeend', cardHTML);
+
+        if (cat.name === "Inu" || cat.name === "伊萊諾斯") {
+            specialContainer.insertAdjacentHTML('beforeend', cardHTML);
+        } else {
+            regularContainer.insertAdjacentHTML('beforeend', cardHTML);
+        }
     });
+
+    // 🌟 大小同步魔法：使用 ResizeObserver
+    const regularContainerEl = document.getElementById('regular-cats-container');
+    const specialCards = specialContainer.querySelectorAll('.polaroid-card');
+    
+    if (regularContainerEl && specialCards.length > 0) {
+        // 監聽下方整個大框框，只要一有風吹草動(縮放螢幕)就重新量尺寸
+        const observer = new ResizeObserver(() => {
+            const regularCard = regularContainerEl.querySelector('.polaroid-card');
+            if(regularCard) {
+                // 使用 getBoundingClientRect 抓取最精準的含小數點寬度
+                const exactWidth = regularCard.getBoundingClientRect().width + 'px';
+                
+                specialCards.forEach(card => {
+                    card.style.width = exactWidth;
+                    card.style.flex = `0 0 ${exactWidth}`; 
+                });
+            }
+        });
+        
+        observer.observe(regularContainerEl);
+    }
 }
 
 // 🌟 獨立出來的「更新彈窗內容」函式

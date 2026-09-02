@@ -264,9 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
         catList.forEach(cat => {
             let isAvailable = true;
 
-            if (wyalSecretMode && cat !== "維梧爾") {
-                isAvailable = false;
-            } else if (selectedTimes.length > 0) {
+            if (selectedTimes.length > 0) {
                 for (let time of selectedTimes) {
                     const key = `${selectedDate}_${time}`;
                     if (!shiftData[key] || shiftData[key][cat] !== "O") {
@@ -332,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (addonSelect) addonSelect.addEventListener('change', calculateTotal);
 
     function calculateTotal() {
-        const PRICE_PER_PERIOD = 50000; 
+        const PRICE_PER_PERIOD = 100000; 
         const periodsCount = document.querySelectorAll('.time-cb:checked').length;
         const catsCount = document.querySelector('.cat-cb:checked') ? 1 : 0;
         

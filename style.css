@@ -1835,3 +1835,221 @@ textarea { resize: none; }
         width: 100%;
     }
 }
+/* =========================================
+   DIRUNE 質感網頁版菜單
+   ========================================= */
+.dirune-menu-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .dirune-menu-container {
+        flex-direction: column; /* 手機版自動變成上下排列 */
+        gap: 30px;
+    }
+}
+
+.menu-section {
+    flex: 1;
+    background: #fffdf9;
+    border: 2px dashed #e2d5c5;
+    border-radius: 15px;
+    padding: 35px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+}
+
+.menu-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+}
+
+.menu-section-title {
+    color: #d4af37;
+    text-align: center;
+    font-size: 1.6rem;
+    margin-top: 0;
+    border-bottom: 2px solid #e2d5c5;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    margin-bottom: 25px;
+}
+
+.menu-item-header {
+    display: flex;
+    align-items: baseline;
+    color: #5d4037;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* 經典菜單虛線特效 */
+.menu-item-dots {
+    flex-grow: 1;
+    border-bottom: 2px dotted #dcd1ba;
+    margin: 0 15px;
+    position: relative;
+    top: -6px;
+    opacity: 0.6;
+}
+
+.menu-item-price {
+    color: #8D6E63;
+    font-family: 'Kalam', 'Courier New', monospace;
+    font-size: 1.15rem;
+}
+
+.menu-item-desc {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #795548;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.badge {
+    background: #d32f2f;
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 8px;
+    font-weight: normal;
+    box-shadow: 0 2px 5px rgba(211, 47, 47, 0.3);
+}
+/* =========================================
+   DIRUNE 貓咪誘惑道具專屬菜單
+   ========================================= */
+.attractor-menu {
+    flex-direction: column;
+    align-items: center;
+    max-width: 850px; /* 控制菜單最大寬度，讓畫面更緊湊精緻 */
+}
+
+.attractor-credits {
+    text-align: center;
+    color: #8D6E63;
+    font-size: 0.95rem;
+    margin-top: -15px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.attractor-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.attractor-card {
+    display: flex;
+    background: #fffdf9;
+    border: 2px dashed #e2d5c5;
+    border-radius: 15px;
+    padding: 20px 30px;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.attractor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+    border-color: #d4af37;
+}
+
+/* 🖼️ 左邊的圖片區塊 */
+.attractor-img {
+    flex: 0 0 120px; /* 固定圖片區塊大小 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.attractor-img img {
+    max-width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(2px 5px 6px rgba(93, 64, 55, 0.15)); /* 加上淡淡的陰影讓手繪圖更有立體感 */
+}
+
+/* 📝 右邊的文字區塊 */
+.attractor-info {
+    flex: 1;
+}
+
+.attractor-header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.attractor-name {
+    color: #5d4037;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.attractor-price {
+    color: #d4af37;
+    font-family: 'Kalam', cursive;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.attractor-desc {
+    color: #795548;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.attractor-duration {
+    display: inline-block;
+    margin-top: 10px;
+    color: #8D6E63;
+    font-weight: bold;
+    background: #f0e6d2;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+/* 📱 手機版排版優化：變成上下排列 */
+@media (max-width: 600px) {
+    .attractor-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 15px;
+    }
+    .attractor-header {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .menu-item-dots {
+        display: none; /* 手機版隱藏虛線 */
+    }
+    .attractor-price {
+        margin-left: 10px;
+    }
+}
