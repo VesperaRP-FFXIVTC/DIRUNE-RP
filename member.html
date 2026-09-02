@@ -9,7 +9,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+ <!-- 音樂播放器 -->
+    <!-- 💥 加上 autoplay 屬性，告訴瀏覽器我們想自動播放 -->
+    <audio id="bgm" autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/3h5gixndlak2mgygluquq/Track-in-Time-Piano-Version.mp3?rlkey=zofpza1p3lwamce0xu95jfpjs&st=l4lzlxlu&raw=1" type="audio/mpeg">
+    </audio>
+    <div class="music-toggle" id="musicBtn">
+        <span id="music-icon">🎵</span>
+        <span class="music-text">BGM OFF</span>
+    </div>
     <!-- 導覽列 -->
     <header>
        <nav>
@@ -29,15 +37,20 @@
     <!-- ==========================================
          DIRUNE 會員集點卡系統 (前端介面)
          ========================================== -->
+         
     <div class="loyalty-container">
         
         <!-- 狀態 1：查詢輸入框 -->
         <div id="loyalty-search-section" class="loyalty-section active">
-            <h2 class="loyalty-title">🐾 VIP 會員集點查詢 🐾</h2>
+            <h2 class="loyalty-title">🐾 會員集點卡查詢 🐾</h2>
             <p class="loyalty-desc">請輸入您的角色全名</p>
             <div class="loyalty-input-group">
                 <input type="text" id="character-name-input" placeholder="例如: Inu" autocomplete="off">
                 <button id="search-btn" class="loyalty-btn" onclick="mockSearch()">查詢點數</button>
+                <h4 style="text-align: center;">📋 如何獲得集點與集點卡？</h4>
+        <li><strong>集點卡入手條件：</strong> 當日來店消費總金額達 <strong>100,000 Gil</strong> 或以上</li>
+        <li><strong>點數累積方式：</strong> 每次購買 <strong>「貓薄荷」</strong> 即可獲得 <strong>1 點</strong>。</li>
+        <li><strong>獲取上限：</strong> 為了維護公平與體驗，每次開店營業期間，單日最多僅能獲得 <strong>2 點</strong>。</li>
             </div>
         </div>
 
@@ -53,7 +66,7 @@
             <p class="loyalty-status" id="points-status">目前點數: 0 / 10</p>
             <!-- ================= 新增的獎勵目錄區塊 ================= -->
             <div class="reward-box">
-                <h3 class="reward-title">🎁 VIP 專屬兌換目錄</h3>
+                <h3 class="reward-title">🎁兌換目錄</h3>
                 
                 <!-- 獎品項目 -->
                 <div class="reward-item">
